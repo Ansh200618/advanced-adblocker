@@ -198,12 +198,21 @@ class OptionsController {
   addWhitelistItem(domain) {
     const list = document.getElementById('whitelist-list');
     const li = document.createElement('li');
-    li.innerHTML = `
-      <span>${domain}</span>
-      <button class="remove-btn" data-domain="${domain}">Remove</button>
-    `;
     
-    li.querySelector('.remove-btn').addEventListener('click', async (e) => {
+    // Create span for domain text
+    const span = document.createElement('span');
+    span.textContent = domain;
+    
+    // Create remove button
+    const button = document.createElement('button');
+    button.className = 'remove-btn';
+    button.textContent = 'Remove';
+    button.setAttribute('data-domain', domain);
+    
+    li.appendChild(span);
+    li.appendChild(button);
+    
+    button.addEventListener('click', async (e) => {
       const domain = e.target.getAttribute('data-domain');
       await chrome.runtime.sendMessage({ 
         action: 'removeFromWhitelist', 
@@ -224,12 +233,23 @@ class OptionsController {
   addCustomFilterItem(filter) {
     const list = document.getElementById('custom-filter-list');
     const li = document.createElement('li');
-    li.innerHTML = `
-      <span><code>${filter}</code></span>
-      <button class="remove-btn" data-filter="${filter}">Remove</button>
-    `;
     
-    li.querySelector('.remove-btn').addEventListener('click', async (e) => {
+    // Create span with code element for filter text
+    const span = document.createElement('span');
+    const code = document.createElement('code');
+    code.textContent = filter;
+    span.appendChild(code);
+    
+    // Create remove button
+    const button = document.createElement('button');
+    button.className = 'remove-btn';
+    button.textContent = 'Remove';
+    button.setAttribute('data-filter', filter);
+    
+    li.appendChild(span);
+    li.appendChild(button);
+    
+    button.addEventListener('click', async (e) => {
       const filterToRemove = e.target.getAttribute('data-filter');
       
       // Get current filters and remove the one
