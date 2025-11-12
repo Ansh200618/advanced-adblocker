@@ -1,0 +1,26 @@
+{
+  "name": "advanced-adblocker",
+  "version": "1.0.0",
+  "description": "Advanced ad blocker browser extension with comprehensive filtering",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js",
+    "build:chrome": "node build.js chrome",
+    "build:firefox": "node build.js firefox",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/",
+    "package": "npm run build && node package.js"
+  },
+  "keywords": [
+    "adblocker",
+    "privacy",
+    "extension",
+    "chrome",
+    "firefox"
+  ],
+  "author": "Ansh200618",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  }
+}
