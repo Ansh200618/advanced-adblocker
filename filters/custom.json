@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1001,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*://example.com/custom-blocked-path/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media"]
+    }
+  }
+]

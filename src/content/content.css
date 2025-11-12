@@ -1,0 +1,40 @@
+/* Content Script Cosmetic Filtering CSS */
+
+/* Hide common ad containers */
+[data-blocked="true"],
+.advertisement,
+.ad-container,
+.ad-wrapper,
+.ad-banner,
+.ad-unit,
+.sponsored-content,
+.sponsored-ad {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Common ad selectors */
+iframe[src*="doubleclick"],
+iframe[src*="googlesyndication"],
+iframe[src*="googleadservices"],
+a[href*="doubleclick.net"],
+a[href*="/ads/"],
+div[id*="google_ads"],
+div[class*="google-ad"],
+ins.adsbygoogle {
+  display: none !important;
+}
+
+/* Social media ads */
+[data-ad-preview="true"],
+[data-ad-comet="true"],
+[data-testid*="ad"],
+[aria-label*="Sponsored"],
+div[data-ad] {
+  display: none !important;
+}

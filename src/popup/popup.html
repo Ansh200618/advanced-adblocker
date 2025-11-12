@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Ad Blocker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="../../assets/icons/icon48.png" alt="Advanced Ad Blocker" id="logo-icon">
+        <h1>Advanced Ad Blocker</h1>
+      </div>
+      <div class="toggle-container">
+        <label class="switch">
+          <input type="checkbox" id="toggle-blocker" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </header>
+
+    <div class="stats-container">
+      <h2>Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" id="ads-blocked">0</div>
+          <div class="stat-label">Ads Blocked</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="trackers-blocked">0</div>
+          <div class="stat-label">Trackers Blocked</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="scripts-blocked">0</div>
+          <div class="stat-label">Scripts Blocked</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="total-blocked">0</div>
+          <div class="stat-label">Total Blocked</div>
+        </div>
+      </div>
+      <button id="reset-stats" class="secondary-btn">Reset Statistics</button>
+    </div>
+
+    <div class="quick-actions">
+      <h2>Quick Actions</h2>
+      <button id="whitelist-btn" class="action-btn">
+        <span class="btn-icon">✓</span>
+        <span class="btn-text">Whitelist This Site</span>
+      </button>
+      <button id="element-picker-btn" class="action-btn">
+        <span class="btn-icon">🎯</span>
+        <span class="btn-text">Block Element</span>
+      </button>
+      <button id="settings-btn" class="action-btn">
+        <span class="btn-icon">⚙️</span>
+        <span class="btn-text">Settings</span>
+      </button>
+    </div>
+
+    <footer>
+      <div class="status" id="status">
+        <span class="status-dot active"></span>
+        <span id="status-text">Protection Active</span>
+      </div>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
