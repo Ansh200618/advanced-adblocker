@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Ad Blocker - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <img src="../../assets/icons/icon48.png" alt="Advanced Ad Blocker" class="logo">
+        <h1>Advanced Ad Blocker Settings</h1>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="general">General</button>
+      <button class="tab-btn" data-tab="filters">Filter Lists</button>
+      <button class="tab-btn" data-tab="whitelist">Whitelist</button>
+      <button class="tab-btn" data-tab="custom">Custom Filters</button>
+      <button class="tab-btn" data-tab="about">About</button>
+    </nav>
+
+    <main class="content">
+      <!-- General Tab -->
+      <div class="tab-content active" id="general-tab">
+        <h2>General Settings</h2>
+        
+        <div class="setting-group">
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Enable Ad Blocking</h3>
+              <p>Block ads and trackers across all websites</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="enable-blocking" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Block Trackers</h3>
+              <p>Prevent tracking scripts from monitoring your activity</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="block-trackers" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Cosmetic Filtering</h3>
+              <p>Hide ad placeholders and clean up page layouts</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="cosmetic-filtering" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Show Blocked Count Badge</h3>
+              <p>Display number of blocked items on extension icon</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="show-badge" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Statistics</h3>
+          <div class="stats-display">
+            <div class="stat-card">
+              <div class="stat-value" id="total-ads">0</div>
+              <div class="stat-label">Total Ads Blocked</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="total-trackers">0</div>
+              <div class="stat-label">Total Trackers Blocked</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="total-scripts">0</div>
+              <div class="stat-label">Total Scripts Blocked</div>
+            </div>
+          </div>
+          <button id="clear-stats" class="btn btn-secondary">Clear All Statistics</button>
+        </div>
+      </div>
+
+      <!-- Filter Lists Tab -->
+      <div class="tab-content" id="filters-tab">
+        <h2>Filter Lists</h2>
+        <p class="description">Enable or disable filter lists to customize your blocking experience</p>
+        
+        <div class="filter-list">
+          <div class="filter-item">
+            <div class="filter-info">
+              <h3>EasyList</h3>
+              <p>Primary filter list for blocking ads</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="filter-toggle" data-filter="easylist" checked disabled>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="filter-item">
+            <div class="filter-info">
+              <h3>EasyPrivacy</h3>
+              <p>Blocks tracking and analytics</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="filter-toggle" data-filter="easyprivacy" checked disabled>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="filter-item">
+            <div class="filter-info">
+              <h3>Custom Rules</h3>
+              <p>Your custom blocking rules</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="filter-toggle" data-filter="custom" checked disabled>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <strong>Note:</strong> Filter lists are automatically updated to provide the best protection. Core lists cannot be disabled.
+        </div>
+      </div>
+
+      <!-- Whitelist Tab -->
+      <div class="tab-content" id="whitelist-tab">
+        <h2>Whitelisted Websites</h2>
+        <p class="description">Sites on this list will not have ads or trackers blocked</p>
+        
+        <div class="input-group">
+          <input type="text" id="whitelist-input" placeholder="Enter domain (e.g., example.com)">
+          <button id="add-whitelist" class="btn btn-primary">Add Domain</button>
+        </div>
+
+        <div class="list-container">
+          <ul id="whitelist-list" class="domain-list">
+            <!-- Whitelist items will be added here dynamically -->
+          </ul>
+          <div id="whitelist-empty" class="empty-state">
+            No whitelisted domains. Add one above to get started.
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Filters Tab -->
+      <div class="tab-content" id="custom-tab">
+        <h2>Custom Filters</h2>
+        <p class="description">Add your own custom blocking rules</p>
+        
+        <div class="input-group">
+          <input type="text" id="custom-filter-input" placeholder="Enter filter (e.g., ||example.com/ads)">
+          <button id="add-custom-filter" class="btn btn-primary">Add Filter</button>
+        </div>
+
+        <div class="list-container">
+          <ul id="custom-filter-list" class="domain-list">
+            <!-- Custom filters will be added here dynamically -->
+          </ul>
+          <div id="custom-filter-empty" class="empty-state">
+            No custom filters. Add one above to get started.
+          </div>
+        </div>
+
+        <div class="info-box">
+          <strong>Filter Syntax:</strong><br>
+          • <code>||domain.com^</code> - Block domain and all subdomains<br>
+          • <code>domain.com/path</code> - Block specific URL path<br>
+          • <code>*.ads.*</code> - Block using wildcards
+        </div>
+      </div>
+
+      <!-- About Tab -->
+      <div class="tab-content" id="about-tab">
+        <h2>About Advanced Ad Blocker</h2>
+        
+        <div class="about-section">
+          <h3>Version</h3>
+          <p>1.0.0</p>
+        </div>
+
+        <div class="about-section">
+          <h3>Description</h3>
+          <p>Advanced Ad Blocker is a comprehensive browser extension that blocks ads, trackers, and malicious scripts to provide a faster, safer, and more private browsing experience.</p>
+        </div>
+
+        <div class="about-section">
+          <h3>Features</h3>
+          <ul class="feature-list">
+            <li>✓ Block ads across all websites</li>
+            <li>✓ Prevent tracking and analytics</li>
+            <li>✓ Cosmetic filtering to hide ad placeholders</li>
+            <li>✓ Element picker to block specific page elements</li>
+            <li>✓ Custom filter rules</li>
+            <li>✓ Whitelist management</li>
+            <li>✓ Detailed blocking statistics</li>
+          </ul>
+        </div>
+
+        <div class="about-section">
+          <h3>Privacy</h3>
+          <p>This extension does not collect, store, or transmit any personal data. All settings and statistics are stored locally on your device.</p>
+        </div>
+
+        <div class="about-section">
+          <h3>License</h3>
+          <p>GPL-3.0</p>
+        </div>
+
+        <div class="about-section">
+          <h3>Support</h3>
+          <p>For issues, questions, or contributions, visit the <a href="https://github.com/Ansh200618/advanced-adblocker" target="_blank">GitHub repository</a>.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

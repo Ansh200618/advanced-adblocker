@@ -9,7 +9,8 @@
     "build:firefox": "node build.js firefox",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/",
-    "package": "npm run build && node package.js"
+    "package": "npm run build && node package.js",
+    "verify": "node verify.js"
   },
   "keywords": [
     "adblocker",

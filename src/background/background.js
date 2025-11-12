@@ -60,19 +60,19 @@ class AdBlocker {
       return true; // Keep channel open for async response
     });
 
-    // Listen for web requests
-    chrome.webRequest.onBeforeRequest.addListener(
-      (details) => this.handleRequest(details),
-      { urls: ['<all_urls>'] },
-      ['blocking']
-    );
-
     // Listen for navigation events
     chrome.webNavigation.onCommitted.addListener((details) => {
       if (details.frameId === 0) {
         this.updateBadge(details.tabId);
       }
     });
+
+    // Track blocked requests using declarativeNetRequest
+    if (chrome.declarativeNetRequest && chrome.declarativeNetRequest.onRuleMatchedDebug) {
+      chrome.declarativeNetRequest.onRuleMatchedDebug.addListener((details) => {
+        this.incrementStats('request');
+      });
+    }
 
     // Context menu
     chrome.contextMenus.create({
@@ -93,66 +93,39 @@ class AdBlocker {
     try {
       const rulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
       console.log('Enabled rulesets:', rulesets);
+      
+      // Update dynamic rules if enabled state changed
+      await this.updateDynamicRules();
     } catch (error) {
       console.error('Error initializing filters:', error);
     }
   }
 
-  handleRequest(details) {
-    if (!this.enabled) return {};
-
-    const url = new URL(details.url);
-    const hostname = url.hostname;
-
-    // Check whitelist
-    if (this.isWhitelisted(hostname)) {
-      return {};
+  async updateDynamicRules() {
+    try {
+      // Get existing dynamic rules
+      const existingRules = await chrome.declarativeNetRequest.getDynamicRules();
+      const existingRuleIds = existingRules.map(rule => rule.id);
+      
+      // Create rules for whitelisted domains
+      const whitelistRules = Array.from(this.whitelist).map((domain, index) => ({
+        id: 10000 + index,
+        priority: 2,
+        action: { type: 'allow' },
+        condition: {
+          urlFilter: `*://*.${domain}/*`,
+          resourceTypes: ['main_frame', 'sub_frame', 'script', 'xmlhttprequest', 'image', 'media']
+        }
+      }));
+      
+      // Update dynamic rules
+      await chrome.declarativeNetRequest.updateDynamicRules({
+        removeRuleIds: existingRuleIds,
+        addRules: whitelistRules
+      });
+    } catch (error) {
+      console.error('Error updating dynamic rules:', error);
     }
-
-    // Check if request should be blocked
-    if (this.shouldBlock(details)) {
-      this.incrementStats(details.type);
-      console.log('Blocked:', details.url);
-      return { cancel: true };
-    }
-
-    return {};
-  }
-
-  shouldBlock(details) {
-    const url = details.url.toLowerCase();
-    
-    // Common ad patterns
-    const adPatterns = [
-      /[\/\.]ad[sx]?\./,
-      /[\/\.]advert/,
-      /[\/\.]banner/,
-      /[\/\.]popup/,
-      /doubleclick\.net/,
-      /googlesyndication/,
-      /googleadservices/,
-      /google-analytics/,
-      /facebook\.com\/tr/,
-      /\/ads\//,
-      /\/banner\//,
-      /\/tracking\//
-    ];
-
-    // Check against patterns
-    for (const pattern of adPatterns) {
-      if (pattern.test(url)) {
-        return true;
-      }
-    }
-
-    // Check custom filters
-    for (const filter of this.customFilters) {
-      if (url.includes(filter.toLowerCase())) {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   isWhitelisted(hostname) {
@@ -199,12 +172,14 @@ class AdBlocker {
       case 'addToWhitelist':
         this.whitelist.add(message.domain);
         await this.saveData();
+        await this.updateDynamicRules();
         sendResponse({ success: true });
         break;
       
       case 'removeFromWhitelist':
         this.whitelist.delete(message.domain);
         await this.saveData();
+        await this.updateDynamicRules();
         sendResponse({ success: true });
         break;
       

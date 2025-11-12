@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*://doubleclick.net/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*://googlesyndication.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*://googleadservices.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*://adservice.google.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*/ads/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*/ad/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*/banner/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*/popup/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*://pagead2.googlesyndication.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*://advertising.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "media", "font", "stylesheet", "sub_frame"]
+    }
+  }
+]
