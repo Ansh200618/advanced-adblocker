@@ -14,6 +14,7 @@
 
 - ✅ **YouTube Ad Blocking** - All ad types eliminated
 - ✅ **Popup & Redirect Blocking** - No interruptions
+- ✅ **Download Timer Bypass** - Skip "wait X seconds" instantly
 - ✅ **Tracker Blocking** - 50+ privacy rules
 - ✅ **Malware Protection** - Security filtering
 - ✅ **Cookie Popup Blocker** - Automatic removal
@@ -41,13 +42,20 @@ YouTube, Twitch, Spotify, Facebook, Instagram, Twitter, Banner ads, Video ads, N
 Google Analytics, Facebook Pixel, Mixpanel, Amplitude, Hotjar, Mouseflow, 40+ more trackers
 
 ### Annoyances
-Cookie popups, Newsletter popups, Chat widgets, Social share buttons, Comment systems
+Cookie popups, Newsletter popups, Chat widgets, Social share buttons, Comment systems, **Download wait timers**
 
 ### Security
 Malware, Phishing, Cryptocurrency miners, Browser exploits
 
 ### Popups & Redirects
 All major popup networks, URL shorteners, Redirect chains
+
+### Download Timer Bypass
+**NEW!** Automatically skips "Please wait X seconds..." countdown timers on file hosting sites:
+- ⚡ Accelerates timers from 15s → 1s
+- 🔓 Auto-enables disabled download buttons
+- 🚀 Auto-clicks download when ready
+- 🎯 Works on MediaFire, MEGA, ZippyShare, and similar sites
 
 ## 📥 Installation
 
