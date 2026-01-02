@@ -1,5 +1,24 @@
 // Options Page Script
 document.addEventListener('DOMContentLoaded', async () => {
+  // Get DOM elements first
+  const enableToggle = document.getElementById('enableToggle');
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  
+  // Load theme function
+  async function loadTheme() {
+    try {
+      const result = await chrome.storage.local.get('theme');
+      const theme = result.theme || 'light';
+      
+      if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (darkModeToggle) darkModeToggle.checked = true;
+      }
+    } catch (error) {
+      console.error('Error loading theme:', error);
+    }
+  }
+  
   // Load theme
   await loadTheme();
   
@@ -20,10 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById(`${tabId}-tab`).classList.add('active');
     });
   });
-
-  // General Settings
-  const enableToggle = document.getElementById('enableToggle');
-  const darkModeToggle = document.getElementById('darkModeToggle');
   
   // Dark mode toggle
   if (darkModeToggle) {
@@ -53,21 +68,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     enableToggle.checked = response.enabled;
   } catch (error) {
     console.error('Error loading enabled state:', error);
-  }
-  
-  // Load theme function
-  async function loadTheme() {
-    try {
-      const result = await chrome.storage.local.get('theme');
-      const theme = result.theme || 'light';
-      
-      if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        if (darkModeToggle) darkModeToggle.checked = true;
-      }
-    } catch (error) {
-      console.error('Error loading theme:', error);
-    }
   }
 
   // Whitelist Management
