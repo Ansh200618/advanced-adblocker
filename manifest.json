@@ -84,7 +84,8 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "src/content/picker.html"
+                "src/content/picker.html",
+                "src/content/anti-adblock.js"
             ],
             "matches": [
                 "<all_urls>"
