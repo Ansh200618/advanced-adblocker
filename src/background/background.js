@@ -336,11 +336,11 @@ class AdBlocker {
         const rulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
         if (this.enabled) {
           await chrome.declarativeNetRequest.updateEnabledRulesets({
-            enableRulesetIds: ['easylist', 'easyprivacy', 'custom']
+            enableRulesetIds: ['easylist', 'easyprivacy', 'annoyances', 'custom']
           });
         } else {
           await chrome.declarativeNetRequest.updateEnabledRulesets({
-            disableRulesetIds: ['easylist', 'easyprivacy', 'custom']
+            disableRulesetIds: ['easylist', 'easyprivacy', 'annoyances', 'custom']
           });
         }
         
