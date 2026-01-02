@@ -60,13 +60,6 @@ class AdBlocker {
       return true; // Keep channel open for async response
     });
 
-    // Listen for web requests
-    chrome.webRequest.onBeforeRequest.addListener(
-      (details) => this.handleRequest(details),
-      { urls: ['<all_urls>'] },
-      ['blocking']
-    );
-
     // Listen for navigation events
     chrome.webNavigation.onCommitted.addListener((details) => {
       if (details.frameId === 0) {
@@ -74,11 +67,13 @@ class AdBlocker {
       }
     });
 
-    // Context menu
-    chrome.contextMenus.create({
-      id: 'blockElement',
-      title: 'Block this element',
-      contexts: ['all']
+    // Context menu - check if it exists first to avoid duplicate error
+    chrome.contextMenus.removeAll(() => {
+      chrome.contextMenus.create({
+        id: 'blockElement',
+        title: 'Block this element',
+        contexts: ['all']
+      });
     });
 
     chrome.contextMenus.onClicked.addListener((info, tab) => {
@@ -93,66 +88,14 @@ class AdBlocker {
     try {
       const rulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
       console.log('Enabled rulesets:', rulesets);
+      
+      // Track blocked requests for statistics
+      chrome.declarativeNetRequest.onRuleMatchedDebug?.addListener?.((details) => {
+        this.incrementStats(details.request.type);
+      });
     } catch (error) {
       console.error('Error initializing filters:', error);
     }
-  }
-
-  handleRequest(details) {
-    if (!this.enabled) return {};
-
-    const url = new URL(details.url);
-    const hostname = url.hostname;
-
-    // Check whitelist
-    if (this.isWhitelisted(hostname)) {
-      return {};
-    }
-
-    // Check if request should be blocked
-    if (this.shouldBlock(details)) {
-      this.incrementStats(details.type);
-      console.log('Blocked:', details.url);
-      return { cancel: true };
-    }
-
-    return {};
-  }
-
-  shouldBlock(details) {
-    const url = details.url.toLowerCase();
-    
-    // Common ad patterns
-    const adPatterns = [
-      /[\/\.]ad[sx]?\./,
-      /[\/\.]advert/,
-      /[\/\.]banner/,
-      /[\/\.]popup/,
-      /doubleclick\.net/,
-      /googlesyndication/,
-      /googleadservices/,
-      /google-analytics/,
-      /facebook\.com\/tr/,
-      /\/ads\//,
-      /\/banner\//,
-      /\/tracking\//
-    ];
-
-    // Check against patterns
-    for (const pattern of adPatterns) {
-      if (pattern.test(url)) {
-        return true;
-      }
-    }
-
-    // Check custom filters
-    for (const filter of this.customFilters) {
-      if (url.includes(filter.toLowerCase())) {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   isWhitelisted(hostname) {
