@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Logger - Advanced Ad Blocker</title>
+  <link rel="stylesheet" href="logger.css">
+</head>
+<body>
+  <div class="logger-container">
+    <!-- Header -->
+    <header class="logger-header">
+      <div class="header-left">
+        <svg class="logo" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1>Request Logger</h1>
+      </div>
+      <div class="header-actions">
+        <button id="toggleLoggingBtn" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Enable Logging</span>
+        </button>
+        <button id="clearLogBtn" class="btn-danger">
+          <svg viewBox="0 0 24 24" fill="none">
+            <polyline points="3 6 5 6 21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Clear Log</span>
+        </button>
+        <button id="refreshBtn" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3.51 15C4.15 16.65 5.29 18.07 6.78 19.07C8.27 20.07 10.05 20.59 11.86 20.56C13.67 20.53 15.43 19.96 16.89 18.92C18.35 17.88 19.44 16.43 20.02 14.76C20.6 13.09 20.64 11.28 20.13 9.59C19.62 7.9 18.59 6.41 17.18 5.33C15.77 4.25 14.05 3.63 12.25 3.56C10.45 3.49 8.68 3.98 7.17 4.96L1 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Refresh</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-label">Total Requests</span>
+        <span id="totalRequests" class="stat-value">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Blocked</span>
+        <span id="blockedCount" class="stat-value">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Logging Status</span>
+        <span id="loggingStatus" class="stat-value status-disabled">Disabled</span>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <label>Filter by Type:</label>
+        <select id="typeFilter">
+          <option value="all">All Types</option>
+          <option value="script">Scripts</option>
+          <option value="xmlhttprequest">XHR</option>
+          <option value="image">Images</option>
+          <option value="stylesheet">Stylesheets</option>
+          <option value="media">Media</option>
+          <option value="font">Fonts</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Search:</label>
+        <input type="text" id="searchInput" placeholder="Search URL or domain...">
+      </div>
+    </div>
+
+    <!-- Log Table -->
+    <div class="log-table-container">
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Type</th>
+            <th>URL</th>
+            <th>Rule ID</th>
+            <th>Ruleset</th>
+          </tr>
+        </thead>
+        <tbody id="logTableBody">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+      <div id="emptyState" class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <p>No requests logged yet</p>
+        <p class="empty-state-hint">Enable logging to start tracking blocked requests</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="logger.js"></script>
+</body>
+</html>
