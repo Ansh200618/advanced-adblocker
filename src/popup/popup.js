@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadStats();
   await loadEnabledState();
   await loadTheme();
-
+  
   // Theme toggle event
   themeToggle.addEventListener('click', async () => {
     const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
@@ -27,11 +27,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.body.classList.toggle('dark-mode');
     
     try {
-      await chrome.storage.local.set({ theme: newTheme });
+      // Disable auto theme when manually toggled
+      await chrome.storage.local.set({ theme: newTheme, autoTheme: false });
     } catch (error) {
       console.error('Error saving theme:', error);
     }
   });
+
+  // Automatic dark/light mode based on system preference
+  async function loadTheme() {
+    try {
+      const result = await chrome.storage.local.get(['theme', 'autoTheme']);
+      const autoTheme = result.autoTheme !== false; // Default to true
+      let theme = result.theme || 'light';
+      
+      // If auto theme is enabled, check system preference
+      if (autoTheme && window.matchMedia) {
+        const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        theme = darkModeQuery.matches ? 'dark' : 'light';
+        
+        // Listen for system theme changes
+        darkModeQuery.addEventListener('change', (e) => {
+          const newTheme = e.matches ? 'dark' : 'light';
+          document.body.classList.toggle('dark-mode', e.matches);
+        });
+      }
+      
+      if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    } catch (error) {
+      console.error('Error loading theme:', error);
+    }
+  }
 
   // Toggle button event
   toggleBtn.addEventListener('click', async () => {

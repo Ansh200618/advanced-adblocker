@@ -1,5 +1,6 @@
-// Anti-Adblock Bypass Script
+// Anti-Adblock Bypass Script - Enhanced Stealth Mode
 // This script runs in the page context to prevent adblock detection
+// Uses advanced techniques to remain completely undetectable
 (function() {
   'use strict';
   
@@ -11,19 +12,122 @@
   const trueFunc = function() { return true; };
   const falseFunc = function() { return false; };
   
-  // Common adblock detection libraries
-  if (typeof FuckAdBlock !== 'undefined') {
-    window.FuckAdBlock = undefined;
-  }
-  if (typeof BlockAdBlock !== 'undefined') {
-    window.BlockAdBlock = undefined;
+  // ============================================
+  // ENHANCED STEALTH MODE - MAKE UNDETECTABLE
+  // ============================================
+  
+  // Intercept and neutralize ALL known adblock detection libraries
+  const adblockDetectionLibraries = [
+    'FuckAdBlock', 'BlockAdBlock', 'SniffAdBlock', 'fuckAdBlock', 
+    'blockAdBlock', 'adBlockDetected', 'AdBlockDetector', 'antiAdBlock',
+    'adblock', 'ab', 'adb', 'adBlocker', 'adblock_detector'
+  ];
+  
+  adblockDetectionLibraries.forEach(lib => {
+    try {
+      Object.defineProperty(window, lib, {
+        configurable: false,
+        writable: false,
+        value: undefined
+      });
+    } catch (e) {}
+  });
+  
+  // Override adblock detection functions with non-configurable properties
+  const antiDetectionProps = {
+    canRunAds: true,
+    isAdBlockActive: false,
+    adBlockEnabled: false,
+    adBlockDetected: false,
+    adblockDetected: false,
+    adblocker: false,
+    AdBlocker: false,
+    hasAdblock: false,
+    adblock: false
+  };
+  
+  Object.keys(antiDetectionProps).forEach(prop => {
+    try {
+      Object.defineProperty(window, prop, {
+        configurable: false,
+        writable: false,
+        value: antiDetectionProps[prop]
+      });
+    } catch (e) {}
+  });
+  
+  // Mock Google AdSense to appear as if it's loaded
+  Object.defineProperty(window, 'adsbygoogle', {
+    configurable: false,
+    writable: false,
+    value: []
+  });
+  
+  // Create fake ad elements to trick detection scripts
+  function createFakeAdElements() {
+    const fakeAds = [
+      { id: 'ad-banner', class: 'ad-container' },
+      { id: 'google_ads_iframe', class: 'google-ad' },
+      { class: 'adsbygoogle' }
+    ];
+    
+    fakeAds.forEach(ad => {
+      const div = document.createElement('div');
+      if (ad.id) div.id = ad.id;
+      if (ad.class) div.className = ad.class;
+      div.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;';
+      div.innerHTML = '&nbsp;';
+      document.body.appendChild(div);
+    });
   }
   
-  // Override adblock detection functions
-  window.canRunAds = true;
-  window.isAdBlockActive = false;
-  window.adBlockEnabled = false;
-  window.adBlockDetected = false;
+  // Run fake ad creation after page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', createFakeAdElements);
+  } else {
+    createFakeAdElements();
+  }
+  
+  // Intercept fetch/XMLHttpRequest to fake ad script loading
+  const originalFetch = window.fetch;
+  window.fetch = function(...args) {
+    const url = args[0];
+    // Detect if it's checking for ad script availability
+    if (typeof url === 'string' && (
+      url.includes('doubleclick') || 
+      url.includes('googlesyndication') ||
+      url.includes('google-analytics') ||
+      url.includes('googleadservices')
+    )) {
+      // Return fake successful response
+      return Promise.resolve(new Response('', {
+        status: 200,
+        statusText: 'OK',
+        headers: new Headers({ 'Content-Type': 'text/javascript' })
+      }));
+    }
+    return originalFetch.apply(this, args);
+  };
+  
+  // Override XMLHttpRequest for older detection methods
+  const originalXHROpen = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(method, url, ...rest) {
+    if (typeof url === 'string' && (
+      url.includes('doubleclick') || 
+      url.includes('googlesyndication') ||
+      url.includes('/ads/') ||
+      url.includes('/ad.')
+    )) {
+      // Intercept and fake success
+      this.addEventListener('readystatechange', function() {
+        if (this.readyState === 4) {
+          Object.defineProperty(this, 'status', { value: 200, writable: false });
+          Object.defineProperty(this, 'responseText', { value: '', writable: false });
+        }
+      });
+    }
+    return originalXHROpen.apply(this, [method, url, ...rest]);
+  };
   
   // Prevent popup/popunder
   const _open = window.open;
@@ -94,16 +198,19 @@
     if (typeof callback === 'function') {
       const callbackStr = callback.toString();
       
-      // Neutralize adblock detection patterns
+      // Neutralize adblock detection patterns - STEALTH MODE
       const adPatterns = [
         /adblock/i,
         /ublock/i,
-        /antiblock/i
+        /antiblock/i,
+        /ad[\s_-]?block/i,
+        /detector/i,
+        /adblocker/i
       ];
       
       for (const pattern of adPatterns) {
         if (pattern.test(callbackStr)) {
-          console.log('[AdBlocker] Neutralized adblock detection timer');
+          // Return fake timer ID but don't execute
           return originalSetTimeout.call(this, noop, delay);
         }
       }
@@ -123,7 +230,6 @@
         const hasWaitText = /wait|countdown|download|please wait/i.test(bodyText);
         
         if (isTimerRelated || (hasWaitText && delay > 5000)) {
-          console.log('[AdBlocker] Accelerated download timer from ' + delay + 'ms to 1000ms');
           delay = 1000; // Reduce to 1 second
         }
       }
@@ -137,12 +243,13 @@
       const adPatterns = [
         /adblock/i,
         /ublock/i,
-        /antiblock/i
+        /antiblock/i,
+        /ad[\s_-]?block/i,
+        /detector/i
       ];
       
       for (const pattern of adPatterns) {
         if (pattern.test(callbackStr)) {
-          console.log('[AdBlocker] Neutralized adblock detection interval');
           return originalSetInterval.call(this, noop, delay);
         }
       }
@@ -156,18 +263,70 @@
   console.clear = function() {
     clearCount++;
     if (clearCount > 5) {
-      console.log('[AdBlocker] Prevented excessive console.clear()');
       return;
     }
     return originalClear.apply(this, arguments);
   };
   
-  // Neutralize common anti-adblock patterns
-  Object.defineProperty(window, 'adsbygoogle', {
-    configurable: false,
-    get: function() { return []; },
-    set: function() {}
-  });
+  // Override document.write to prevent ad blocker detection messages
+  const originalDocWrite = document.write;
+  document.write = function(content) {
+    if (typeof content === 'string') {
+      // Block ad blocker warning messages
+      if (/adblock|ad[\s-]?blocker|disable.*ad|turn off.*ad/i.test(content)) {
+        return;
+      }
+    }
+    return originalDocWrite.apply(this, arguments);
+  };
+  
+  // Intercept and neutralize iframe-based ad detection
+  const originalCreateElement = document.createElement;
+  document.createElement = function(tagName) {
+    const element = originalCreateElement.call(this, tagName);
+    if (tagName.toLowerCase() === 'iframe') {
+      const originalSetAttribute = element.setAttribute;
+      element.setAttribute = function(name, value) {
+        // Detect if iframe is being used for ad detection
+        if (name === 'src' && typeof value === 'string' && (
+          value.includes('/ads/') || 
+          value.includes('doubleclick') ||
+          value.includes('googlesyndication')
+        )) {
+          // Prevent it from loading but don't throw error
+          return;
+        }
+        return originalSetAttribute.apply(this, arguments);
+      };
+    }
+    return element;
+  };
+  
+  // Neutralize MutationObserver-based detection
+  const originalObserve = MutationObserver.prototype.observe;
+  MutationObserver.prototype.observe = function(target, options) {
+    // Filter out observations that might detect ad blocking
+    if (options && options.childList && target) {
+      const originalCallback = this.callback;
+      this.callback = function(mutations, observer) {
+        // Filter out ad-related mutations
+        const filteredMutations = mutations.filter(mutation => {
+          const addedNodes = Array.from(mutation.addedNodes || []);
+          const hasAdElements = addedNodes.some(node => {
+            if (node.className && typeof node.className === 'string') {
+              return /ad|banner|sponsor/i.test(node.className);
+            }
+            return false;
+          });
+          return !hasAdElements;
+        });
+        if (filteredMutations.length > 0) {
+          return originalCallback.call(this, filteredMutations, observer);
+        }
+      };
+    }
+    return originalObserve.apply(this, arguments);
+  };
   
   // ============================================
   // DOWNLOAD TIMER BYPASS - Additional Features
@@ -214,7 +373,6 @@
               }
             });
           }
-          console.log('[AdBlocker] Enabled button:', text.trim());
         }
       });
     });
@@ -263,7 +421,6 @@
           
           if (isVisible && actuallyVisible && !btn.dataset.autoClicked) {
             btn.dataset.autoClicked = 'true';
-            console.log('[AdBlocker] Auto-clicking button:', text.trim() || href);
             setTimeout(() => {
               btn.click();
             }, 100);
@@ -273,7 +430,7 @@
     });
   }
   
-  // Remove countdown timer displays
+  // Remove countdown timer displays AND ad blocker warnings
   function removeCountdownDisplays() {
     const countdownSelectors = [
       '[id*="countdown"]',
@@ -281,19 +438,33 @@
       '[id*="timer"]',
       '[class*="timer"]',
       '[id*="wait"]',
-      '[class*="wait"]'
+      '[class*="wait"]',
+      '[id*="adblock"]',
+      '[class*="adblock"]',
+      '[id*="ad-block"]',
+      '[class*="ad-block"]'
     ];
     
     countdownSelectors.forEach(selector => {
       const elements = document.querySelectorAll(selector);
       elements.forEach(el => {
         const text = el.textContent || '';
-        // If it shows "wait X seconds" or countdown numbers
-        if (/wait.*\d+|countdown.*\d+|\d+.*second/i.test(text)) {
+        // If it shows "wait X seconds" or countdown numbers OR adblock warnings
+        if (/wait.*\d+|countdown.*\d+|\d+.*second|adblock|ad blocker|disable.*ad|turn off/i.test(text)) {
           el.style.display = 'none';
-          console.log('[AdBlocker] Hidden countdown display');
+          el.remove(); // Actually remove from DOM
         }
       });
+    });
+    
+    // Also check for overlay/modal warnings
+    const overlays = document.querySelectorAll('[class*="modal"], [class*="overlay"], [class*="popup"], [id*="modal"], [id*="overlay"], [id*="popup"]');
+    overlays.forEach(el => {
+      const text = el.textContent || '';
+      if (/adblock|ad blocker|disable.*ad|turn off.*ad|please.*disable/i.test(text)) {
+        el.style.display = 'none';
+        el.remove();
+      }
     });
   }
   
