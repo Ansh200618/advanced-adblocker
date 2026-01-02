@@ -64,6 +64,16 @@
                 "path": "filters/annoyances.json"
             },
             {
+                "id": "social-annoyances",
+                "enabled": true,
+                "path": "filters/social-annoyances.json"
+            },
+            {
+                "id": "security",
+                "enabled": true,
+                "path": "filters/security.json"
+            },
+            {
                 "id": "custom",
                 "enabled": true,
                 "path": "filters/custom.json"

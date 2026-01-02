@@ -1,0 +1,182 @@
+[
+  {
+    "id": 401,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "malware",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 402,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "virus",
+      "resourceTypes": ["script", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 403,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "phishing",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 404,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "exploit",
+      "resourceTypes": ["script", "other"]
+    }
+  },
+  {
+    "id": 405,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "malicious",
+      "resourceTypes": ["script", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 406,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "trojan",
+      "resourceTypes": ["script", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 407,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "cryptojacking",
+      "resourceTypes": ["script", "websocket", "other"]
+    }
+  },
+  {
+    "id": 408,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "coinminer",
+      "resourceTypes": ["script", "websocket", "other"]
+    }
+  },
+  {
+    "id": 409,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "browsermine",
+      "resourceTypes": ["script", "websocket", "other"]
+    }
+  },
+  {
+    "id": 410,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "monero-miner",
+      "resourceTypes": ["script", "websocket", "other"]
+    }
+  },
+  {
+    "id": 411,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "webminepool.com",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 412,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "crypto-loot.com",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 413,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "cnhv.co",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 414,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "miner.pr0gramm.com",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 415,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "minero.cc",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 416,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "minercry.pt",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 417,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "minemytraffic.com",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 418,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "ppoi.org",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 419,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "static-cnt.bid",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 420,
+    "priority": 3,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "host.d-ns.ga",
+      "resourceTypes": ["script", "websocket", "xmlhttprequest", "other"]
+    }
+  }
+]
