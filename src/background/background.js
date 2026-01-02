@@ -308,6 +308,7 @@ class AdBlocker {
 
   incrementStats(type) {
     this.stats.totalBlocked++;
+    this.stats.requestsAnalyzed++;
     
     if (type === 'script') {
       this.stats.scriptsBlocked++;
@@ -319,7 +320,16 @@ class AdBlocker {
       this.stats.adsBlocked++;
     }
 
-    this.saveData();
+    // Update badge immediately after blocking
+    this.updateAllTabBadges();
+    
+    // Debounced save to avoid excessive writes
+    if (!this.saveTimeout) {
+      this.saveTimeout = setTimeout(() => {
+        this.saveData();
+        this.saveTimeout = null;
+      }, 1000);
+    }
   }
 
   async handleMessage(message, sender, sendResponse) {
@@ -471,21 +481,42 @@ class AdBlocker {
   async updateBadge(tabId) {
     try {
       const text = this.stats.totalBlocked > 0 
-        ? (this.stats.totalBlocked > 999 
-          ? Math.floor(this.stats.totalBlocked / 1000) + 'k' 
+        ? (this.stats.totalBlocked > 999999
+          ? Math.floor(this.stats.totalBlocked / 1000000) + 'M'
+          : this.stats.totalBlocked > 999 
+          ? Math.floor(this.stats.totalBlocked / 1000) + 'K' 
           : String(this.stats.totalBlocked))
-        : '';
+        : '0';
         
       await chrome.action.setBadgeText({
         tabId: tabId,
         text: text
       });
+      
+      // Color based on state: green when enabled, gray when disabled
       await chrome.action.setBadgeBackgroundColor({
         tabId: tabId,
         color: this.enabled ? '#10b981' : '#6b7280'
       });
+      
+      // Optional: Add tooltip
+      await chrome.action.setTitle({
+        tabId: tabId,
+        title: `Advanced Ad Blocker\n${this.stats.totalBlocked.toLocaleString()} ads blocked\n${this.stats.adsBlocked.toLocaleString()} ads | ${this.stats.trackersBlocked.toLocaleString()} trackers | ${this.stats.scriptsBlocked.toLocaleString()} scripts`
+      });
     } catch (error) {
       console.error('Error updating badge:', error);
+    }
+  }
+
+  async updateAllTabBadges() {
+    try {
+      const tabs = await chrome.tabs.query({});
+      for (const tab of tabs) {
+        await this.updateBadge(tab.id);
+      }
+    } catch (error) {
+      console.error('Error updating all badges:', error);
     }
   }
 
