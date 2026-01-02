@@ -41,9 +41,8 @@
     "priority": 2,
     "action": {"type": "block"},
     "condition": {
-      "urlFilter": "googlevideo.com/videoplayback",
-      "resourceTypes": ["media"],
-      "regexFilter": ".*[&?]adsid=.*"
+      "regexFilter": ".*googlevideo\\.com/videoplayback.*[&?]adsid=.*",
+      "resourceTypes": ["media"]
     }
   },
   {
@@ -348,9 +347,8 @@
     "priority": 2,
     "action": {"type": "block"},
     "condition": {
-      "urlFilter": "twitter.com/i/api/graphql",
-      "resourceTypes": ["xmlhttprequest"],
-      "regexFilter": ".*promoted.*"
+      "regexFilter": ".*twitter\\.com/i/api/graphql.*promoted.*",
+      "resourceTypes": ["xmlhttprequest"]
     }
   },
   {
