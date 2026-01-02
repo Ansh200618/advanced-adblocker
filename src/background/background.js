@@ -313,7 +313,7 @@ class AdBlocker {
       this.stats.scriptsBlocked++;
     } else if (type === 'image' || type === 'media') {
       this.stats.adsBlocked++;
-    } else if (type === 'xmlhttprequest' || type === 'beacon') {
+    } else if (type === 'xmlhttprequest' || type === 'ping') {
       this.stats.trackersBlocked++;
     } else {
       this.stats.adsBlocked++;

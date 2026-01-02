@@ -285,12 +285,12 @@ body {
 }
 
 .stat-icon.trackers {
-  background: var(--warning-color)20;
+  background: rgba(245, 158, 11, 0.2);
   color: var(--warning-color);
 }
 
 .stat-icon.scripts {
-  background: var(--info-color)20;
+  background: rgba(59, 130, 246, 0.2);
   color: var(--info-color);
 }
 
