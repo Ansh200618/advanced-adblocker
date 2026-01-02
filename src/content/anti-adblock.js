@@ -392,43 +392,7 @@
     });
   }
   
-  // Auto-click download buttons when timer completes
-  function autoClickDownloadButton() {
-    const clickableSelectors = [
-      'button:not([disabled])',
-      'a:not([disabled])',
-      'a.download',
-      '.download-button:not([disabled])',
-      '.btn-download:not([disabled])',
-      '#download:not([disabled])',
-      '[id*="download"]:not([disabled])',
-      '[class*="download"]:not([disabled])',
-      '.btn-primary:not([disabled])',
-      '.btn:not([disabled])',
-      '[href*="download"]'
-    ];
-    
-    clickableSelectors.forEach(selector => {
-      const buttons = document.querySelectorAll(selector);
-      buttons.forEach(btn => {
-        const text = btn.textContent || btn.innerText || btn.value || btn.title || '';
-        const href = btn.href || '';
-        // Only auto-click if it's clearly a download button and visible
-        if (/download|get file|continue|click here|proceed|skip|next|go to/i.test(text.trim()) || /download/i.test(href)) {
-          const isVisible = btn.offsetParent !== null;
-          const computedStyle = window.getComputedStyle(btn);
-          const actuallyVisible = computedStyle.display !== 'none' && computedStyle.visibility !== 'hidden' && computedStyle.opacity !== '0';
-          
-          if (isVisible && actuallyVisible && !btn.dataset.autoClicked) {
-            btn.dataset.autoClicked = 'true';
-            setTimeout(() => {
-              btn.click();
-            }, 100);
-          }
-        }
-      });
-    });
-  }
+
   
   // Remove countdown timer displays AND ad blocker warnings
   function removeCountdownDisplays() {
@@ -474,33 +438,10 @@
     removeCountdownDisplays();
   }, 500); // Check every 500ms - balanced between responsiveness and performance
   
-  // Run auto-click check after potential timer completion (more attempts)
-  setTimeout(() => {
-    autoClickDownloadButton();
-  }, 1000);
-  
-  setTimeout(() => {
-    autoClickDownloadButton();
-  }, 2000);
-  
-  setTimeout(() => {
-    autoClickDownloadButton();
-  }, 3000);
-  
-  setTimeout(() => {
-    autoClickDownloadButton();
-  }, 5000);
-  
-  setTimeout(() => {
-    autoClickDownloadButton();
-  }, 10000);
-  
   // Listen for DOM changes to catch dynamically added buttons
   if (document.body) {
     const observer = new MutationObserver(() => {
       enableDownloadButtons();
-      // Try auto-click immediately when DOM changes
-      setTimeout(autoClickDownloadButton, 500);
     });
     observer.observe(document.body, {
       childList: true,
@@ -510,5 +451,5 @@
     });
   }
   
-  console.log('[AdBlocker] Anti-adblock bypass + Download timer bypass activated');
+  console.log('[AdBlocker] Anti-adblock bypass + Download timer bypass activated (no auto-click)');
 })();
