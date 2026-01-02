@@ -26,16 +26,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   const darkModeToggle = document.getElementById('darkModeToggle');
   
   // Dark mode toggle
-  darkModeToggle.addEventListener('change', async () => {
-    const isDark = darkModeToggle.checked;
-    document.body.classList.toggle('dark-mode', isDark);
-    
-    try {
-      await chrome.storage.local.set({ theme: isDark ? 'dark' : 'light' });
-    } catch (error) {
-      console.error('Error saving theme:', error);
-    }
-  });
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('change', async () => {
+      const isDark = darkModeToggle.checked;
+      document.body.classList.toggle('dark-mode', isDark);
+      
+      try {
+        await chrome.storage.local.set({ theme: isDark ? 'dark' : 'light' });
+      } catch (error) {
+        console.error('Error saving theme:', error);
+      }
+    });
+  }
   
   enableToggle.addEventListener('change', async () => {
     try {

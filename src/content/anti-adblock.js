@@ -266,13 +266,6 @@
             console.log('[AdBlocker] Auto-clicking button:', text.trim() || href);
             setTimeout(() => {
               btn.click();
-              // Also try triggering mouse events in case click() doesn't work
-              const clickEvent = new MouseEvent('click', {
-                bubbles: true,
-                cancelable: true,
-                view: window
-              });
-              btn.dispatchEvent(clickEvent);
             }, 100);
           }
         }
@@ -304,11 +297,11 @@
     });
   }
   
-  // Run checks periodically (more aggressive)
+  // Run checks periodically (balanced approach)
   setInterval(() => {
     enableDownloadButtons();
     removeCountdownDisplays();
-  }, 250); // Check every 250ms instead of 500ms
+  }, 500); // Check every 500ms - balanced between responsiveness and performance
   
   // Run auto-click check after potential timer completion (more attempts)
   setTimeout(() => {
