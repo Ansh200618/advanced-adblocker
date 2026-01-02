@@ -1,5 +1,8 @@
 // Options Page Script
 document.addEventListener('DOMContentLoaded', async () => {
+  // Load theme
+  await loadTheme();
+  
   // Tab navigation
   const navItems = document.querySelectorAll('.nav-item');
   const tabContents = document.querySelectorAll('.tab-content');
@@ -20,6 +23,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // General Settings
   const enableToggle = document.getElementById('enableToggle');
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  
+  // Dark mode toggle
+  darkModeToggle.addEventListener('change', async () => {
+    const isDark = darkModeToggle.checked;
+    document.body.classList.toggle('dark-mode', isDark);
+    
+    try {
+      await chrome.storage.local.set({ theme: isDark ? 'dark' : 'light' });
+    } catch (error) {
+      console.error('Error saving theme:', error);
+    }
+  });
   
   enableToggle.addEventListener('change', async () => {
     try {
@@ -35,6 +51,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     enableToggle.checked = response.enabled;
   } catch (error) {
     console.error('Error loading enabled state:', error);
+  }
+  
+  // Load theme function
+  async function loadTheme() {
+    try {
+      const result = await chrome.storage.local.get('theme');
+      const theme = result.theme || 'light';
+      
+      if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (darkModeToggle) darkModeToggle.checked = true;
+      }
+    } catch (error) {
+      console.error('Error loading theme:', error);
+    }
   }
 
   // Whitelist Management

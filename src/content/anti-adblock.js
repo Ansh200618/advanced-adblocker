@@ -180,25 +180,57 @@
     const buttonSelectors = [
       'button[disabled]',
       'a[disabled]',
+      'input[type="button"][disabled]',
+      'input[type="submit"][disabled]',
       '.download-button[disabled]',
       '.btn-download[disabled]',
       '#download[disabled]',
       '[id*="download"][disabled]',
-      '[class*="download"][disabled]'
+      '[class*="download"][disabled]',
+      '[id*="btn"][disabled]',
+      '[class*="btn"][disabled]',
+      'a[style*="pointer-events"]',
+      'button[style*="pointer-events"]'
     ];
     
     buttonSelectors.forEach(selector => {
       const buttons = document.querySelectorAll(selector);
       buttons.forEach(btn => {
-        // Check if button text suggests it's a download button
-        const text = btn.textContent || btn.innerText || '';
-        if (/download|get file|continue/i.test(text)) {
+        // Check if button text suggests it's a download button or action button
+        const text = btn.textContent || btn.innerText || btn.value || '';
+        if (/download|get file|continue|click here|proceed|go to|skip|next/i.test(text)) {
           btn.removeAttribute('disabled');
+          btn.disabled = false;
           btn.style.pointerEvents = 'auto';
           btn.style.opacity = '1';
-          console.log('[AdBlocker] Enabled download button:', text.trim());
+          btn.style.cursor = 'pointer';
+          // Remove any overlay that might be covering the button
+          const parent = btn.parentElement;
+          if (parent) {
+            const overlays = parent.querySelectorAll('[style*="position: absolute"]');
+            overlays.forEach(overlay => {
+              if (overlay !== btn && overlay.style.zIndex > 0) {
+                overlay.style.display = 'none';
+              }
+            });
+          }
+          console.log('[AdBlocker] Enabled button:', text.trim());
         }
       });
+    });
+    
+    // Also look for any countdown/timer elements and try to force them to 0
+    const timerElements = document.querySelectorAll('[id*="timer"], [class*="timer"], [id*="countdown"], [class*="countdown"], [id*="wait"], [class*="wait"]');
+    timerElements.forEach(el => {
+      const text = el.textContent || '';
+      if (/\d+/.test(text)) {
+        // Try to set the text to 0 or empty
+        if (el.tagName === 'INPUT') {
+          el.value = '0';
+        } else {
+          el.textContent = '0';
+        }
+      }
     });
   }
   
@@ -206,25 +238,42 @@
   function autoClickDownloadButton() {
     const clickableSelectors = [
       'button:not([disabled])',
+      'a:not([disabled])',
       'a.download',
       '.download-button:not([disabled])',
       '.btn-download:not([disabled])',
       '#download:not([disabled])',
       '[id*="download"]:not([disabled])',
-      '.btn-primary:not([disabled])'
+      '[class*="download"]:not([disabled])',
+      '.btn-primary:not([disabled])',
+      '.btn:not([disabled])',
+      '[href*="download"]'
     ];
     
     clickableSelectors.forEach(selector => {
       const buttons = document.querySelectorAll(selector);
       buttons.forEach(btn => {
-        const text = btn.textContent || btn.innerText || '';
+        const text = btn.textContent || btn.innerText || btn.value || btn.title || '';
+        const href = btn.href || '';
         // Only auto-click if it's clearly a download button and visible
-        if (/^(download|get file|continue to download)/i.test(text.trim())) {
+        if (/download|get file|continue|click here|proceed|skip|next|go to/i.test(text.trim()) || /download/i.test(href)) {
           const isVisible = btn.offsetParent !== null;
-          if (isVisible && !btn.dataset.autoClicked) {
+          const computedStyle = window.getComputedStyle(btn);
+          const actuallyVisible = computedStyle.display !== 'none' && computedStyle.visibility !== 'hidden' && computedStyle.opacity !== '0';
+          
+          if (isVisible && actuallyVisible && !btn.dataset.autoClicked) {
             btn.dataset.autoClicked = 'true';
-            console.log('[AdBlocker] Auto-clicking download button:', text.trim());
-            setTimeout(() => btn.click(), 100);
+            console.log('[AdBlocker] Auto-clicking button:', text.trim() || href);
+            setTimeout(() => {
+              btn.click();
+              // Also try triggering mouse events in case click() doesn't work
+              const clickEvent = new MouseEvent('click', {
+                bubbles: true,
+                cancelable: true,
+                view: window
+              });
+              btn.dispatchEvent(clickEvent);
+            }, 100);
           }
         }
       });
@@ -255,29 +304,45 @@
     });
   }
   
-  // Run checks periodically
+  // Run checks periodically (more aggressive)
   setInterval(() => {
     enableDownloadButtons();
     removeCountdownDisplays();
-  }, 500);
+  }, 250); // Check every 250ms instead of 500ms
   
-  // Run auto-click check after potential timer completion
+  // Run auto-click check after potential timer completion (more attempts)
+  setTimeout(() => {
+    autoClickDownloadButton();
+  }, 1000);
+  
   setTimeout(() => {
     autoClickDownloadButton();
   }, 2000);
   
   setTimeout(() => {
     autoClickDownloadButton();
+  }, 3000);
+  
+  setTimeout(() => {
+    autoClickDownloadButton();
   }, 5000);
+  
+  setTimeout(() => {
+    autoClickDownloadButton();
+  }, 10000);
   
   // Listen for DOM changes to catch dynamically added buttons
   if (document.body) {
     const observer = new MutationObserver(() => {
       enableDownloadButtons();
+      // Try auto-click immediately when DOM changes
+      setTimeout(autoClickDownloadButton, 500);
     });
     observer.observe(document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
+      attributes: true, // Watch for attribute changes too (like disabled being added)
+      attributeFilter: ['disabled', 'style', 'class']
     });
   }
   

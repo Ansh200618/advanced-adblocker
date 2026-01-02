@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   // Get DOM elements
   const toggleBtn = document.getElementById('toggleBtn');
+  const themeToggle = document.getElementById('themeToggle');
   const statusText = document.getElementById('statusText');
   const statusCard = document.querySelector('.status-card');
   const adsBlocked = document.getElementById('adsBlocked');
@@ -16,6 +17,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Load initial state
   await loadStats();
   await loadEnabledState();
+  await loadTheme();
+
+  // Theme toggle event
+  themeToggle.addEventListener('click', async () => {
+    const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.body.classList.toggle('dark-mode');
+    
+    try {
+      await chrome.storage.local.set({ theme: newTheme });
+    } catch (error) {
+      console.error('Error saving theme:', error);
+    }
+  });
 
   // Toggle button event
   toggleBtn.addEventListener('click', async () => {
@@ -102,6 +118,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
       console.error('Error loading enabled state:', error);
       updateEnabledUI(true); // Default to enabled
+    }
+  }
+
+  async function loadTheme() {
+    try {
+      const result = await chrome.storage.local.get('theme');
+      const theme = result.theme || 'light';
+      
+      if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    } catch (error) {
+      console.error('Error loading theme:', error);
     }
   }
 

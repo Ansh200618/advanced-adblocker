@@ -23,6 +23,20 @@
   --sidebar-width: 260px;
 }
 
+/* Dark Mode Variables */
+body.dark-mode {
+  --bg-primary: #1f2937;
+  --bg-secondary: #111827;
+  --bg-tertiary: #374151;
+  --bg-hover: #4b5563;
+  
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  
+  --border-color: #374151;
+}
+
 * {
   margin: 0;
   padding: 0;
