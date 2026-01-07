@@ -1,0 +1,32 @@
+! EasyList Ad Blocking Rules
+! Version: 202601070001
+! Last modified: 07 Jan 2026
+! Expires: 1 day
+! Homepage: https://easylist.to/
+
+! Ad networks
+||doubleclick.net^
+||googleadservices.com^
+||googlesyndication.com^
+||google-analytics.com^
+||amazon-adsystem.com^
+||advertising.com^
+||adnxs.com^
+||adsafeprotected.com^
+||adserver.com^
+||adtech.de^
+||admob.com^
+||ads.yahoo.com^
+||advertising.amazon.com^
+||taboola.com^
+||outbrain.com^
+||criteo.com^
+||pubmatic.com^
+||rubiconproject.com^
+||openx.net^
+||media.net^
+||sovrn.com^
+||indexexchange.com^
+||spotxchange.com^
+||advertising.com^
+||2mdn.net^

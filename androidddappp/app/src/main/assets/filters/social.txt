@@ -1,0 +1,19 @@
+! Social Widgets and Annoyances
+! Version: 202601070001
+
+! Social share buttons
+||addthis.com^
+||sharethis.com^
+||addtoany.com^
+
+! Social tracking
+||facebook.com/plugins^
+||facebook.com/like.php^
+||twitter.com/widgets^
+||platform.twitter.com^
+||linkedin.com/countserv^
+||pinterest.com/ct.html^
+
+! Comment systems
+||disqus.com/embed^
+||livefyre.com^

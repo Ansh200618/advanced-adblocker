@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:title="@string/pref_category_general">
+
+        <SwitchPreferenceCompat
+            app:key="enable_adblock"
+            app:title="@string/pref_enable_adblock_title"
+            app:summary="@string/pref_enable_adblock_summary"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="block_trackers"
+            app:title="@string/pref_block_trackers_title"
+            app:summary="@string/pref_block_trackers_summary"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="block_annoyances"
+            app:title="@string/pref_block_annoyances_title"
+            app:summary="@string/pref_block_annoyances_summary"
+            app:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/pref_category_stats">
+
+        <Preference
+            app:key="reset_stats"
+            app:title="@string/pref_reset_stats_title"
+            app:summary="@string/pref_reset_stats_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/pref_category_advanced">
+
+        <Preference
+            app:key="custom_filters"
+            app:title="@string/pref_custom_filters_title"
+            app:summary="@string/pref_custom_filters_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

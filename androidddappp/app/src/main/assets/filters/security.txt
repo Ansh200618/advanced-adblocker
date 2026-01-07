@@ -1,0 +1,22 @@
+! Security and Malware Protection
+! Version: 202601070001
+
+! Cryptocurrency miners
+||coinhive.com^
+||coin-hive.com^
+||jsecoin.com^
+||crypto-loot.com^
+||cryptoloot.pro^
+||minero.cc^
+||authedmine.com^
+
+! Malware domains
+||malware.com^
+||phishing.com^
+||malicious.com^
+||badsite.com^
+||scam.com^
+
+! Known malicious ad networks
+||adware.com^
+||spyware.com^
