@@ -12,4 +12,7 @@
     <color name="primary">#FF2196F3</color>
     <color name="primary_dark">#FF1976D2</color>
     <color name="accent">#FF4CAF50</color>
+    
+    <!-- Launcher icon colors -->
+    <color name="ic_launcher_background">#2196F3</color>
 </resources>
