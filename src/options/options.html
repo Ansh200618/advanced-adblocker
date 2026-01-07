@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Ad Blocker - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <svg class="logo" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1>Advanced Ad Blocker</h1>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="general">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>General</span>
+        </button>
+        
+        <button class="nav-item" data-tab="filters">
+          <svg viewBox="0 0 24 24" fill="none">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Filter Lists</span>
+        </button>
+        
+        <button class="nav-item" data-tab="whitelist">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Whitelist</span>
+        </button>
+        
+        <button class="nav-item" data-tab="custom">
+          <svg viewBox="0 0 24 24" fill="none">
+            <polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Custom Filters</span>
+        </button>
+        
+        <button class="nav-item" data-tab="stats">
+          <svg viewBox="0 0 24 24" fill="none">
+            <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Statistics</span>
+        </button>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <p class="version">Version 1.0.0</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- General Tab -->
+      <div class="tab-content active" id="general-tab">
+        <div class="content-header">
+          <h2>General Settings</h2>
+          <p>Configure basic ad blocker preferences</p>
+        </div>
+        
+        <div class="settings-section">
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Enable Ad Blocking</h3>
+              <p>Turn on/off the ad blocker globally</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="enableToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Block Trackers</h3>
+              <p>Prevent tracking scripts from collecting your data</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="blockTrackers" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Block Pop-ups</h3>
+              <p>Automatically block pop-up windows and overlays</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="blockPopups" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Show Badge Count</h3>
+              <p>Display blocked items count on extension icon</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="showBadge" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Dark Mode</h3>
+              <p>Switch between light and dark theme</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="darkModeToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Download Timer Bypass</h3>
+              <p>Skip "wait X seconds" countdowns on download sites</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="timerBypass" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Lists Tab -->
+      <div class="tab-content" id="filters-tab">
+        <div class="content-header">
+          <h2>Filter Lists</h2>
+          <p>Manage your ad blocking filter lists</p>
+        </div>
+        
+        <div class="filter-lists">
+          <div class="filter-card">
+            <div class="filter-header">
+              <div class="filter-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                  <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="filter-info">
+                <h3>EasyList</h3>
+                <p>Primary list for blocking ads on English-language websites</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked disabled>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="filter-stats">
+              <span class="stat-badge">10 Rules</span>
+              <span class="stat-badge">Enabled</span>
+            </div>
+          </div>
+          
+          <div class="filter-card">
+            <div class="filter-header">
+              <div class="filter-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="filter-info">
+                <h3>EasyPrivacy</h3>
+                <p>Blocks tracking and analytics scripts</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked disabled>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="filter-stats">
+              <span class="stat-badge">10 Rules</span>
+              <span class="stat-badge">Enabled</span>
+            </div>
+          </div>
+          
+          <div class="filter-card">
+            <div class="filter-header">
+              <div class="filter-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="2"/>
+                  <polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="filter-info">
+                <h3>Custom Rules</h3>
+                <p>Your personalized blocking rules</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked disabled>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="filter-stats">
+              <span class="stat-badge">1 Rule</span>
+              <span class="stat-badge">Enabled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Whitelist Tab -->
+      <div class="tab-content" id="whitelist-tab">
+        <div class="content-header">
+          <h2>Whitelisted Sites</h2>
+          <p>Sites where ad blocking is disabled</p>
+        </div>
+        
+        <div class="input-group">
+          <input type="text" id="whitelistInput" placeholder="example.com">
+          <button id="addWhitelistBtn" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none">
+              <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Add Site
+          </button>
+        </div>
+        
+        <div class="list-container">
+          <ul id="whitelistList" class="item-list"></ul>
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <p>No whitelisted sites yet</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Filters Tab -->
+      <div class="tab-content" id="custom-tab">
+        <div class="content-header">
+          <h2>Custom Filters</h2>
+          <p>Add your own blocking rules</p>
+        </div>
+        
+        <div class="input-group">
+          <input type="text" id="customFilterInput" placeholder="Enter URL pattern to block">
+          <button id="addFilterBtn" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none">
+              <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Add Filter
+          </button>
+        </div>
+        
+        <div class="list-container">
+          <ul id="customFilterList" class="item-list"></ul>
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <p>No custom filters yet</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistics Tab -->
+      <div class="tab-content" id="stats-tab">
+        <div class="content-header">
+          <h2>Statistics</h2>
+          <p>Overview of your ad blocking activity</p>
+        </div>
+        
+        <div class="stats-overview">
+          <div class="stat-box large">
+            <div class="stat-icon-large">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="stat-content-large">
+              <p class="stat-label-large">Total Blocked</p>
+              <p id="totalBlockedStat" class="stat-value-large">0</p>
+            </div>
+          </div>
+          
+          <div class="stat-box">
+            <div class="stat-icon-box ads">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <p class="stat-label-box">Ads Blocked</p>
+            <p id="adsBlockedStat" class="stat-value-box">0</p>
+          </div>
+          
+          <div class="stat-box">
+            <div class="stat-icon-box trackers">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <p class="stat-label-box">Trackers Blocked</p>
+            <p id="trackersBlockedStat" class="stat-value-box">0</p>
+          </div>
+          
+          <div class="stat-box">
+            <div class="stat-icon-box scripts">
+              <svg viewBox="0 0 24 24" fill="none">
+                <polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <p class="stat-label-box">Scripts Blocked</p>
+            <p id="scriptsBlockedStat" class="stat-value-box">0</p>
+          </div>
+        </div>
+        
+        <div class="action-buttons">
+          <button id="resetStatsBtn" class="btn-danger">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M3.51 15C4.15 16.65 5.29 18.07 6.78 19.07C8.27 20.07 10.05 20.59 11.86 20.56C13.67 20.53 15.43 19.96 16.89 18.92C18.35 17.88 19.44 16.43 20.02 14.76C20.6 13.09 20.64 11.28 20.13 9.59C19.62 7.9 18.59 6.41 17.18 5.33C15.77 4.25 14.05 3.63 12.25 3.56C10.45 3.49 8.68 3.98 7.17 4.96L1 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Reset All Statistics
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

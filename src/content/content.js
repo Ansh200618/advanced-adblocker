@@ -1,11 +1,13 @@
 // Content Script - Advanced Ad Blocker
 // Handles cosmetic filtering, element hiding, and element picker
+// With anti-adblock bypass and website compatibility features
 
 class CosmeticFilter {
   constructor() {
     this.pickerActive = false;
     this.highlightedElement = null;
     this.init();
+    this.setupAntiAdblockBypass();
   }
   
   async init() {
@@ -22,6 +24,19 @@ class CosmeticFilter {
     
     // Observe DOM changes
     this.observeDOM();
+  }
+
+  setupAntiAdblockBypass() {
+    // Inject anti-adblock bypass script into page context
+    // Use external file to avoid CSP violations
+    const script = document.createElement('script');
+    script.src = chrome.runtime.getURL('src/content/anti-adblock.js');
+    script.onload = function() {
+      this.remove();
+    };
+    
+    // Inject as early as possible to prevent detection
+    (document.head || document.documentElement).appendChild(script);
   }
   
   applyCosmeticFilters(filters, domain) {

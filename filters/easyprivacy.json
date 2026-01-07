@@ -1,0 +1,452 @@
+[
+  {
+    "id": 101,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "google-analytics.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 102,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "facebook.com/tr",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "image", "other"]
+    }
+  },
+  {
+    "id": 103,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "/tracking/",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 104,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "/analytics/",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 105,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "/collect",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 106,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "mixpanel.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 107,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "hotjar.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 108,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "mouseflow.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 109,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "segment.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 110,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "amplitude.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 111,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "googletagmanager.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 112,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "googletagservices.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 113,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "facebook.net",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 114,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "connect.facebook.net",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 115,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "pixel",
+      "resourceTypes": ["image", "ping", "other"]
+    }
+  },
+  {
+    "id": 116,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "track",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 117,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "fullstory.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 118,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "loggly.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 119,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "quantserve.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 120,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "omnitagjs.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 121,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "newrelic.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 122,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "pingdom.net",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 123,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "stats",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 124,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "metric",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 125,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "insights",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 126,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "telemetry",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 127,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "matomo",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 128,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "piwik",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 129,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "chartbeat.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 130,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "optimizely.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 131,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "heapanalytics.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 132,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "bugsnag.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 133,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "sentry.io",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 134,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "kissmetrics.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 135,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "crazyegg.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 136,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "inspectlet.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 137,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "luckyorange.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 138,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "sessioncam.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 139,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "clicktale.net",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 140,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "userreport.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 141,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "parsely.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 142,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "visualwebsiteoptimizer.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 143,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "usabilla.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 144,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "omniture.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 145,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "everesttech.net",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 146,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "demdex.net",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 147,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "bluekai.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 148,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "krxd.net",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 149,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "exelator.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 150,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "rlcdn.com",
+      "resourceTypes": ["script", "xmlhttprequest", "ping", "other"]
+    }
+  }
+]

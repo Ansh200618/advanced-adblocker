@@ -1,0 +1,29 @@
+! Annoyances Filter List
+! Version: 202601070001
+! YouTube ads and annoyances
+
+! YouTube video ads
+||youtube.com/get_video_info?*&adformat=
+||youtube.com/api/stats/ads
+||youtube.com/pagead/
+||youtube.com/ptracking
+||googlevideo.com/videoplayback?*&adformat=
+
+! Popups and overlays
+||popads.net^
+||popcash.net^
+||propellerads.com^
+||adcash.com^
+||revcontent.com^
+
+! Cookie notices
+||cookiebot.com^
+||onetrust.com^
+||cookielaw.org^
+
+! Chat widgets
+||tawk.to^
+||zopim.com^
+||livechatinc.com^
+||drift.com^
+||intercom.io^

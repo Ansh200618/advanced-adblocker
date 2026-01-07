@@ -1,0 +1,51 @@
+/* Content Script Styles - Advanced Ad Blocker */
+
+/* Hide blocked elements */
+[data-blocked="true"] {
+  display: none !important;
+}
+
+/* Element picker highlight */
+.adblocker-picker-highlight {
+  outline: 2px solid #dc3545 !important;
+  outline-offset: 2px;
+  cursor: crosshair !important;
+}
+
+/* Common ad selectors - cosmetic filtering */
+.ad,
+.ads,
+.advertisement,
+.banner-ad,
+.google-ad,
+.sponsored,
+.ad-banner,
+.ad-container,
+.ad-wrapper,
+.sidebar-ad,
+.header-ad,
+.footer-ad,
+.popup-ad,
+[class*="advert"],
+[class*="sponsor"],
+[id*="advert"],
+[id*="sponsor"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Common ad iframes */
+iframe[src*="doubleclick"],
+iframe[src*="googlesyndication"],
+iframe[src*="googleadservices"],
+iframe[src*="/ads/"],
+iframe[src*="advertising"] {
+  display: none !important;
+}
+
+/* Social media widgets */
+.fb-like-box,
+.twitter-follow-button,
+.social-share-widget {
+  /* Keep these visible unless user specifically blocks them */
+}

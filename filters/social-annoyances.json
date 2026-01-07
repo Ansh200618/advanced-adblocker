@@ -1,0 +1,272 @@
+[
+  {
+    "id": 301,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "cookielaw.org",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 302,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "cookiepro.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 303,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "onetrust.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 304,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "quantcast.com/choice",
+      "resourceTypes": ["script", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 305,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "trustarc.com",
+      "resourceTypes": ["script", "stylesheet", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 306,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "evidon.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 307,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "cookie-script.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 308,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "cookiebot.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 309,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "tawk.to",
+      "resourceTypes": ["script", "stylesheet", "websocket", "other"]
+    }
+  },
+  {
+    "id": 310,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "intercom.io",
+      "resourceTypes": ["script", "stylesheet", "websocket", "other"]
+    }
+  },
+  {
+    "id": 311,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "drift.com",
+      "resourceTypes": ["script", "stylesheet", "websocket", "other"]
+    }
+  },
+  {
+    "id": 312,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "zendesk.com/embeddable",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 313,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "livechatinc.com",
+      "resourceTypes": ["script", "stylesheet", "websocket", "other"]
+    }
+  },
+  {
+    "id": 314,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "olark.com",
+      "resourceTypes": ["script", "stylesheet", "websocket", "other"]
+    }
+  },
+  {
+    "id": 315,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "liveperson.net",
+      "resourceTypes": ["script", "stylesheet", "websocket", "other"]
+    }
+  },
+  {
+    "id": 316,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "zopim.com",
+      "resourceTypes": ["script", "stylesheet", "websocket", "other"]
+    }
+  },
+  {
+    "id": 317,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "mailchimp.com/widget",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 318,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "sumo.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 319,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "sumome.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 320,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "mailmunch.co",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 321,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "optinmonster.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 322,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "privy.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 323,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "justuno.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 324,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "popupsmart.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 325,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "wisepops.com",
+      "resourceTypes": ["script", "stylesheet", "other"]
+    }
+  },
+  {
+    "id": 326,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "addthis.com",
+      "resourceTypes": ["script", "stylesheet", "image", "other"]
+    }
+  },
+  {
+    "id": 327,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "sharethis.com",
+      "resourceTypes": ["script", "stylesheet", "image", "other"]
+    }
+  },
+  {
+    "id": 328,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "addtoany.com",
+      "resourceTypes": ["script", "stylesheet", "image", "other"]
+    }
+  },
+  {
+    "id": 329,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "shareaholic.com",
+      "resourceTypes": ["script", "stylesheet", "image", "other"]
+    }
+  },
+  {
+    "id": 330,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "disqus.com/embed",
+      "resourceTypes": ["script", "stylesheet", "sub_frame", "other"]
+    }
+  }
+]

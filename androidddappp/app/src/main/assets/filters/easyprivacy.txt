@@ -1,0 +1,26 @@
+! EasyPrivacy Tracking Protection
+! Version: 202601070001
+! Last modified: 07 Jan 2026
+! Expires: 1 day
+
+! Trackers
+||google-analytics.com^
+||facebook.com/tr^
+||facebook.net/tr^
+||connect.facebook.net^
+||pixel.facebook.com^
+||analytics.twitter.com^
+||stats.wp.com^
+||scorecardresearch.com^
+||quantserve.com^
+||hotjar.com^
+||mouseflow.com^
+||crazyegg.com^
+||mixpanel.com^
+||segment.com^
+||amplitude.com^
+||omniture.com^
+||chartbeat.com^
+||newrelic.com^
+||tracking.com^
+||tracker.com^

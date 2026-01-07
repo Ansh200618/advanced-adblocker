@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <item
+        android:id="@+id/action_toggle_blocking"
+        android:title="@string/toggle_blocking"
+        android:checkable="true"
+        android:checked="true"
+        app:showAsAction="never" />
+    
+    <item
+        android:id="@+id/action_filters"
+        android:title="@string/custom_filters"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="ifRoom" />
+    
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        app:showAsAction="ifRoom" />
+        
+</menu>

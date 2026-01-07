@@ -1,1 +1,95 @@
-{"manifest_version": 3, "name": "Advanced Ad Blocker", "version": "1.0.0", "description": "Comprehensive ad blocker with advanced privacy protection and filtering capabilities", "icons": {"16": "assets/icons/icon16.png", "48": "assets/icons/icon48.png", "128": "assets/icons/icon128.png"}, "action": {"default_popup": "src/popup/popup.html", "default_icon": {"16": "assets/icons/icon16.png", "48": "assets/icons/icon48.png", "128": "assets/icons/icon128.png"}}, "background": {"service_worker": "src/background/background.js"}, "content_scripts": [{"matches": ["<all_urls>"], "js": ["src/content/content.js"], "css": ["src/content/content.css"], "run_at": "document_start", "all_frames": true}], "permissions": ["storage", "declarativeNetRequest", "declarativeNetRequestFeedback", "tabs", "webNavigation", "scripting", "contextMenus"], "host_permissions": ["<all_urls>"], "declarative_net_request": {"rule_resources": [{"id": "easylist", "enabled": true, "path": "filters/easylist.json"}, {"id": "easyprivacy", "enabled": true, "path": "filters/easyprivacy.json"}, {"id": "custom", "enabled": true, "path": "filters/custom.json"}]}, "options_page": "src/options/options.html", "web_accessible_resources": [{"resources": ["src/content/picker.html"], "matches": ["<all_urls>"]}]}
+{
+    "manifest_version": 3,
+    "name": "Advanced Ad Blocker",
+    "version": "1.0.0",
+    "description": "Comprehensive ad blocker with advanced privacy protection and filtering capabilities",
+    "icons": {
+        "16": "assets/icons/icon16.png",
+        "48": "assets/icons/icon48.png",
+        "128": "assets/icons/icon128.png"
+    },
+    "action": {
+        "default_popup": "src/popup/popup.html",
+        "default_icon": {
+            "16": "assets/icons/icon16.png",
+            "48": "assets/icons/icon48.png",
+            "128": "assets/icons/icon128.png"
+        }
+    },
+    "background": {
+        "service_worker": "src/background/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "src/content/content.js"
+            ],
+            "css": [
+                "src/content/content.css"
+            ],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
+    "permissions": [
+        "storage",
+        "declarativeNetRequest",
+        "declarativeNetRequestFeedback",
+        "tabs",
+        "webNavigation",
+        "scripting",
+        "contextMenus"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "declarative_net_request": {
+        "rule_resources": [
+            {
+                "id": "easylist",
+                "enabled": true,
+                "path": "filters/easylist.json"
+            },
+            {
+                "id": "easyprivacy",
+                "enabled": true,
+                "path": "filters/easyprivacy.json"
+            },
+            {
+                "id": "annoyances",
+                "enabled": true,
+                "path": "filters/annoyances.json"
+            },
+            {
+                "id": "social-annoyances",
+                "enabled": true,
+                "path": "filters/social-annoyances.json"
+            },
+            {
+                "id": "security",
+                "enabled": true,
+                "path": "filters/security.json"
+            },
+            {
+                "id": "custom",
+                "enabled": true,
+                "path": "filters/custom.json"
+            }
+        ]
+    },
+    "options_page": "src/options/options.html",
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "src/content/picker.html",
+                "src/content/anti-adblock.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}

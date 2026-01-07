@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Filters - Advanced Ad Blocker</title>
+  <link rel="stylesheet" href="filters.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎯 Custom Filters</h1>
+      <div class="header-actions">
+        <button id="backBtn" class="btn btn-secondary">← Back to Options</button>
+        <button id="themeToggle" class="btn btn-icon" title="Toggle theme">
+          <span class="icon">🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Custom Filters Section -->
+    <div class="section">
+      <div class="section-header">
+        <h2>My Filters</h2>
+        <div class="section-actions">
+          <button id="applyBtn" class="btn btn-primary">Apply changes</button>
+          <button id="revertBtn" class="btn btn-secondary">Revert</button>
+          <button id="importBtn" class="btn btn-secondary">Import and append</button>
+          <button id="exportBtn" class="btn btn-secondary">Export</button>
+        </div>
+      </div>
+      
+      <div class="warning-box">
+        <span class="icon">⚠️</span>
+        <span>Do not add filters from untrusted sources.</span>
+      </div>
+
+      <div class="filter-options">
+        <label class="checkbox-label">
+          <input type="checkbox" id="enableCustomFilters" checked>
+          <span>Enable my custom filters</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="trustCustomFilters">
+          <span>Allow custom filters requiring trust</span>
+        </label>
+      </div>
+
+      <div class="editor-container">
+        <div class="editor-header">
+          <span class="editor-info">Line <span id="currentLine">1</span> of <span id="totalLines">1</span></span>
+          <span class="editor-info">Filters: <span id="filterCount">0</span></span>
+        </div>
+        <textarea id="customFiltersEditor" class="filter-editor" spellcheck="false" placeholder="Enter your custom filters here...
+Examples:
+! Comment - starts with exclamation mark
+||example.com^$third-party
+example.com##.advertisement
+@@||example.com^$document (whitelist)
+example.com##.banner:has-text(ad)"></textarea>
+        <div class="editor-footer">
+          <span class="editor-hint">💡 Tip: Use ! for comments, || for domain blocking, ## for element hiding</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Filtering Rules -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Dynamic Filtering Rules</h2>
+        <div class="section-actions">
+          <button id="exportDynamicBtn" class="btn btn-secondary">Export to file</button>
+          <button id="revertDynamicBtn" class="btn btn-secondary">Revert</button>
+          <button id="importDynamicBtn" class="btn btn-secondary">Import from file</button>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="permanent">Permanent rules</button>
+        <button class="tab-btn" data-tab="temporary">Temporary rules</button>
+      </div>
+
+      <div id="permanent-tab" class="tab-content active">
+        <div class="rules-header">
+          <span>Sort by: 
+            <select id="sortPermanent">
+              <option value="type">Rule type</option>
+              <option value="domain">Domain</option>
+              <option value="date">Date added</option>
+            </select>
+          </span>
+          <button id="savePermanentBtn" class="btn btn-sm btn-primary">Save</button>
+        </div>
+        <textarea id="permanentRules" class="rules-editor" spellcheck="false" placeholder="List of your permanent dynamic filtering rules...
+
+Example rules:
+no-large-media: behind-the-scene false
+behind-the-scene * * noop
+example.com * 3p-script block
+example.com * image noop"></textarea>
+      </div>
+
+      <div id="temporary-tab" class="tab-content">
+        <div class="rules-header">
+          <span>Sort by: 
+            <select id="sortTemporary">
+              <option value="type">Rule type</option>
+              <option value="domain">Domain</option>
+              <option value="date">Date added</option>
+            </select>
+          </span>
+          <button id="commitBtn" class="btn btn-sm btn-primary">Commit</button>
+        </div>
+        <textarea id="temporaryRules" class="rules-editor" spellcheck="false" placeholder="Temporary rules will be lost when you close the browser...
+
+These rules are for testing before making them permanent."></textarea>
+      </div>
+    </div>
+
+    <!-- Filter Statistics -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Filter Statistics</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Network Filters</div>
+          <div class="stat-value" id="networkFiltersCount">201</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Cosmetic Filters</div>
+          <div class="stat-value" id="cosmeticFiltersCount">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Custom Filters</div>
+          <div class="stat-value" id="customFiltersCount">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Rules</div>
+          <div class="stat-value" id="activeRulesCount">201</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="section">
+      <div class="section-header">
+        <h2>About Advanced Ad Blocker</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-version">
+          <h3>Advanced Ad Blocker 1.0.0</h3>
+          <p>Comprehensive ad blocker with advanced privacy protection</p>
+        </div>
+        
+        <div class="about-links">
+          <a href="https://github.com/Ansh200618/advanced-adblocker" target="_blank" class="about-link">
+            📦 Source Code (MIT License)
+          </a>
+          <a href="https://github.com/Ansh200618/advanced-adblocker/issues" target="_blank" class="about-link">
+            🐛 Report Issues
+          </a>
+          <a href="https://github.com/Ansh200618/advanced-adblocker/blob/main/CHANGELOG.md" target="_blank" class="about-link">
+            📝 Changelog
+          </a>
+          <a href="https://github.com/Ansh200618/advanced-adblocker/contributors" target="_blank" class="about-link">
+            👥 Contributors
+          </a>
+        </div>
+
+        <div class="about-dependencies">
+          <h4>Built With</h4>
+          <ul>
+            <li>🎨 Modern CSS with custom variables</li>
+            <li>⚡ Vanilla JavaScript (no frameworks)</li>
+            <li>🔒 Manifest V3 (future-proof)</li>
+            <li>🎯 DeclarativeNetRequest API</li>
+          </ul>
+        </div>
+
+        <div class="about-lists">
+          <h4>Filter Lists</h4>
+          <ul>
+            <li>✅ EasyList (50 rules) - Ad blocking</li>
+            <li>✅ EasyPrivacy (50 rules) - Tracker blocking</li>
+            <li>✅ Annoyances (50 rules) - YouTube, popups</li>
+            <li>✅ Social Annoyances (30 rules) - Cookie notices</li>
+            <li>✅ Security (20 rules) - Malware protection</li>
+          </ul>
+        </div>
+
+        <div class="about-footer">
+          <p>Made with ❤️ by the community</p>
+          <p class="copyright">Copyright © 2024-2026 Advanced Ad Blocker Contributors</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="importFileInput" accept=".txt" style="display: none;">
+  <input type="file" id="importDynamicFileInput" accept=".txt" style="display: none;">
+
+  <script src="filters.js"></script>
+</body>
+</html>

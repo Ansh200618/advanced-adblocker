@@ -1,0 +1,453 @@
+[
+  {
+    "id": 201,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "youtube.com/api/stats/ads",
+      "resourceTypes": ["xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 202,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "youtube.com/pagead/",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "other"]
+    }
+  },
+  {
+    "id": 203,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "youtube.com/ptracking",
+      "resourceTypes": ["xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 204,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "youtube.com/get_video_info",
+      "resourceTypes": ["xmlhttprequest"],
+      "excludedInitiatorDomains": ["youtube.com"]
+    }
+  },
+  {
+    "id": 205,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "regexFilter": ".*googlevideo\\.com/videoplayback.*[&?]adsid=.*",
+      "resourceTypes": ["media"]
+    }
+  },
+  {
+    "id": 206,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "youtube.com/api/stats/qoe",
+      "resourceTypes": ["xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 207,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "static.doubleclick.net",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "other"]
+    }
+  },
+  {
+    "id": 208,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "googleads.g.doubleclick.net",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "other"]
+    }
+  },
+  {
+    "id": 209,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "youtube.com/youtubei/v1/player/ad",
+      "resourceTypes": ["xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 210,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "s.youtube.com/api/stats/atr",
+      "resourceTypes": ["xmlhttprequest", "ping", "other"]
+    }
+  },
+  {
+    "id": 211,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "/popunder",
+      "resourceTypes": ["script", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 212,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "/pop-under",
+      "resourceTypes": ["script", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 213,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "popads.net",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "image", "other"]
+    }
+  },
+  {
+    "id": 214,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "popcash.net",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "image", "other"]
+    }
+  },
+  {
+    "id": 215,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "popadscdn.net",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "image", "other"]
+    }
+  },
+  {
+    "id": 216,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "adcash.com",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "image", "other"]
+    }
+  },
+  {
+    "id": 217,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "propellerads.com",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "image", "other"]
+    }
+  },
+  {
+    "id": 218,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "exoclick.com",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "image", "other"]
+    }
+  },
+  {
+    "id": 219,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "redirect",
+      "resourceTypes": ["sub_frame", "other"]
+    }
+  },
+  {
+    "id": 220,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "redirector",
+      "resourceTypes": ["script", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 221,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "redirectingat.com",
+      "resourceTypes": ["script", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 222,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "adf.ly",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 223,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "bc.vc",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 224,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "linkbucks.com",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 225,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "sh.st",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 226,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "coinhive.com",
+      "resourceTypes": ["script", "xmlhttprequest", "websocket", "other"]
+    }
+  },
+  {
+    "id": 227,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "coin-hive.com",
+      "resourceTypes": ["script", "xmlhttprequest", "websocket", "other"]
+    }
+  },
+  {
+    "id": 228,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "cryptoloot.pro",
+      "resourceTypes": ["script", "xmlhttprequest", "websocket", "other"]
+    }
+  },
+  {
+    "id": 229,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "jsecoin.com",
+      "resourceTypes": ["script", "xmlhttprequest", "websocket", "other"]
+    }
+  },
+  {
+    "id": 230,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "webmine.pro",
+      "resourceTypes": ["script", "xmlhttprequest", "websocket", "other"]
+    }
+  },
+  {
+    "id": 231,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "anti-adblock",
+      "resourceTypes": ["script", "other"]
+    }
+  },
+  {
+    "id": 232,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "antiadblock",
+      "resourceTypes": ["script", "other"]
+    }
+  },
+  {
+    "id": 233,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "adblock-detect",
+      "resourceTypes": ["script", "other"]
+    }
+  },
+  {
+    "id": 234,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "blockadblock",
+      "resourceTypes": ["script", "other"]
+    }
+  },
+  {
+    "id": 235,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "fuckadblock",
+      "resourceTypes": ["script", "other"]
+    }
+  },
+  {
+    "id": 236,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "twitch.tv/api/channel/commercial",
+      "resourceTypes": ["xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 237,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "facebook.com/ads/",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "other"]
+    }
+  },
+  {
+    "id": 238,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "instagram.com/ads/",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "other"]
+    }
+  },
+  {
+    "id": 239,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "regexFilter": ".*twitter\\.com/i/api/graphql.*promoted.*",
+      "resourceTypes": ["xmlhttprequest"]
+    }
+  },
+  {
+    "id": 240,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "spotify.com/ads/",
+      "resourceTypes": ["script", "xmlhttprequest", "media", "other"]
+    }
+  },
+  {
+    "id": 241,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "spclient.wg.spotify.com/ad-logic/",
+      "resourceTypes": ["xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 242,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "pubads.g.doubleclick.net",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "other"]
+    }
+  },
+  {
+    "id": 243,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "securepubads.g.doubleclick.net",
+      "resourceTypes": ["script", "xmlhttprequest", "image", "other"]
+    }
+  },
+  {
+    "id": 244,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "tpc.googlesyndication.com",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "other"]
+    }
+  },
+  {
+    "id": 245,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "vimeo.com/ablincoln",
+      "resourceTypes": ["script", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 246,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "dailymotion.com/ads",
+      "resourceTypes": ["script", "xmlhttprequest", "media", "other"]
+    }
+  },
+  {
+    "id": 247,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "hulu.com/ads",
+      "resourceTypes": ["script", "xmlhttprequest", "media", "other"]
+    }
+  },
+  {
+    "id": 248,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "brightcove.net/ads",
+      "resourceTypes": ["script", "xmlhttprequest", "media", "other"]
+    }
+  },
+  {
+    "id": 249,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "amazon-adsystem.com/aax",
+      "resourceTypes": ["script", "xmlhttprequest", "other"]
+    }
+  },
+  {
+    "id": 250,
+    "priority": 2,
+    "action": {"type": "block"},
+    "condition": {
+      "urlFilter": "amazon-adsystem.com/e/dtb",
+      "resourceTypes": ["script", "xmlhttprequest", "other"]
+    }
+  }
+]
