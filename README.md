@@ -139,10 +139,29 @@ Access comprehensive settings by clicking the **Settings** button:
 
 ### Filter Lists
 
-The extension includes:
-- **EasyList**: Primary filter list for blocking advertisements
-- **EasyPrivacy**: Blocks tracking and analytics scripts
-- **Custom Rules**: Your personalized blocking rules
+The extension includes comprehensive blocking rules:
+- **EasyList (20 rules)**: Primary filter list for blocking advertisements
+  - Blocks DoubleClick, Google Ads, ad networks
+  - Blocks common ad paths (/ads/, /ad.js, /advertisement)
+  - Blocks ad frames and ad-related resources
+- **EasyPrivacy (30 rules)**: Blocks tracking and analytics scripts
+  - Google Analytics, Google Tag Manager, Facebook Pixel
+  - Hotjar, Mixpanel, analytics services
+  - Error tracking: Sentry, Rollbar, Bugsnag
+  - Additional tracking pixels and beacons
+- **Custom Rules (10 rules)**: Enhanced blocking for specific scenarios
+  - Tracking pixels and beacons
+  - Social media trackers (LinkedIn, Twitter)
+  - Generic collect and tracking endpoints
+- **Script Injection Blocking**: Content script blocks tracking globals
+  - Prevents execution of ga, gtag, fbq, dataLayer
+  - Blocks Sentry, Rollbar, Hotjar, Mixpanel initialization
+- **Cosmetic Filtering**: 30+ CSS selectors hide ad elements
+  - Common ad containers and wrappers
+  - Sponsored content and social media ads
+  - Tracking pixels and analytics divs
+
+**Total Blocking Rules**: 60+ declarative rules + script-level blocking + cosmetic filters
 
 ### Permissions
 

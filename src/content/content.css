@@ -75,14 +75,20 @@ img[src*="beacon"] {
   display: none !important;
 }
 
-/* Ad slots by common patterns */
-[id^="ad"],
-[id$="ad"],
-[class^="ad-"],
-[class$="-ad"],
-[class*="advertisement"],
-[class*="banner"],
-[class*="sponsor"] {
+/* Ad slots by common patterns - more specific to reduce performance impact */
+div[id^="ad-"],
+div[id^="ad_"],
+div[id$="-ad"],
+div[id$="_ad"],
+div[class^="ad-"],
+div[class$="-ad"],
+div[class*="advertisement"],
+div[class*="banner"],
+div[class*="sponsor"],
+a[id^="ad-"],
+a[class^="ad-"],
+iframe[id^="ad-"],
+iframe[class^="ad-"] {
   display: none !important;
 }
 

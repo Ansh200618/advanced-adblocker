@@ -5,36 +5,40 @@
 (function() {
   'use strict';
   
-  // Block common tracking global variables
-  window.ga = undefined;
-  window._gaq = undefined;
-  window.dataLayer = undefined;
-  window.gtag = undefined;
-  window.fbq = undefined;
-  window.Sentry = undefined;
-  window.Rollbar = undefined;
-  window.hj = undefined;
-  window.mixpanel = undefined;
-  window.Bugsnag = undefined;
-  window._paq = undefined;
+  // Block common tracking global variables using defineProperty
+  const trackingGlobals = {
+    'ga': function() {},
+    '_gaq': { push: function() {} },
+    'dataLayer': { push: function() {} },
+    'gtag': function() {},
+    'fbq': function() {},
+    'Sentry': { init: function() {} },
+    'Rollbar': { init: function() {} },
+    'hj': function() {},
+    'mixpanel': { init: function() {}, track: function() {} },
+    'Bugsnag': { start: function() {} },
+    '_paq': []
+  };
   
-  // Override common tracking functions
-  Object.defineProperty(window, 'ga', { value: function() {}, writable: false });
-  Object.defineProperty(window, '_gaq', { value: { push: function() {} }, writable: false });
-  Object.defineProperty(window, 'dataLayer', { value: { push: function() {} }, writable: false });
-  Object.defineProperty(window, 'gtag', { value: function() {}, writable: false });
-  Object.defineProperty(window, 'fbq', { value: function() {}, writable: false });
-  Object.defineProperty(window, 'Sentry', { value: { init: function() {} }, writable: false });
-  Object.defineProperty(window, 'Rollbar', { value: { init: function() {} }, writable: false });
-  Object.defineProperty(window, 'hj', { value: function() {}, writable: false });
-  Object.defineProperty(window, 'mixpanel', { value: { init: function() {}, track: function() {} }, writable: false });
-  Object.defineProperty(window, 'Bugsnag', { value: { start: function() {} }, writable: false });
+  // Override tracking functions with non-configurable properties
+  for (const [key, value] of Object.entries(trackingGlobals)) {
+    try {
+      Object.defineProperty(window, key, { 
+        value: value, 
+        writable: false,
+        configurable: false 
+      });
+    } catch (e) {
+      // Property may already be defined
+    }
+  }
 })();
 
 class CosmeticFilter {
   constructor() {
     this.pickerActive = false;
     this.highlightedElement = null;
+    this.cachedFilters = null;
     this.init();
   }
   
@@ -42,11 +46,12 @@ class CosmeticFilter {
     // Apply common cosmetic filters immediately
     this.applyCommonFilters();
     
-    // Get cosmetic filters for this domain
+    // Get and cache cosmetic filters for this domain
     const domain = window.location.hostname;
     const response = await chrome.runtime.sendMessage({ action: 'getFilters' });
     
     if (response && response.cosmetic) {
+      this.cachedFilters = response.cosmetic;
       this.applyCosmeticFilters(response.cosmetic, domain);
     }
     
@@ -120,13 +125,28 @@ class CosmeticFilter {
     });
   }
   
-  async checkNode(node) {
-    // Check if node matches any blocking rules
-    const domain = window.location.hostname;
-    const response = await chrome.runtime.sendMessage({ action: 'getFilters' });
+  checkNode(node) {
+    // Check if node matches any blocking rules using cached filters
+    if (!this.cachedFilters) return;
     
-    if (response && response.cosmetic) {
-      this.applyCosmeticFilters(response.cosmetic, domain);
+    const domain = window.location.hostname;
+    
+    // Apply global filters
+    if (this.cachedFilters['*']) {
+      this.cachedFilters['*'].forEach(selector => {
+        if (node.matches && node.matches(selector)) {
+          this.hideElements(selector);
+        }
+      });
+    }
+    
+    // Apply domain-specific filters
+    if (this.cachedFilters[domain]) {
+      this.cachedFilters[domain].forEach(selector => {
+        if (node.matches && node.matches(selector)) {
+          this.hideElements(selector);
+        }
+      });
     }
   }
   
