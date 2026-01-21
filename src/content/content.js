@@ -1,19 +1,57 @@
 // Content Script - Advanced Ad Blocker
 // Handles cosmetic filtering, element hiding, and element picker
 
+// Block tracking scripts early
+(function() {
+  'use strict';
+  
+  // Block common tracking global variables using defineProperty
+  const trackingGlobals = {
+    'ga': function() {},
+    '_gaq': { push: function() {} },
+    'dataLayer': { push: function() {} },
+    'gtag': function() {},
+    'fbq': function() {},
+    'Sentry': { init: function() {} },
+    'Rollbar': { init: function() {} },
+    'hj': function() {},
+    'mixpanel': { init: function() {}, track: function() {} },
+    'Bugsnag': { start: function() {} },
+    '_paq': []
+  };
+  
+  // Override tracking functions with non-configurable properties
+  for (const [key, value] of Object.entries(trackingGlobals)) {
+    try {
+      Object.defineProperty(window, key, { 
+        value: value, 
+        writable: false,
+        configurable: false 
+      });
+    } catch (e) {
+      // Property may already be defined
+    }
+  }
+})();
+
 class CosmeticFilter {
   constructor() {
     this.pickerActive = false;
     this.highlightedElement = null;
+    this.cachedFilters = null;
     this.init();
   }
   
   async init() {
-    // Get cosmetic filters for this domain
+    // Apply common cosmetic filters immediately
+    this.applyCommonFilters();
+    
+    // Get and cache cosmetic filters for this domain
     const domain = window.location.hostname;
     const response = await chrome.runtime.sendMessage({ action: 'getFilters' });
     
     if (response && response.cosmetic) {
+      this.cachedFilters = response.cosmetic;
       this.applyCosmeticFilters(response.cosmetic, domain);
     }
     
@@ -22,6 +60,24 @@ class CosmeticFilter {
     
     // Observe DOM changes
     this.observeDOM();
+  }
+  
+  applyCommonFilters() {
+    // Immediately hide common ad selectors
+    const commonSelectors = [
+      '.advertisement',
+      '.ad-container',
+      '.ad-banner',
+      '.ad-unit',
+      '.adsbygoogle',
+      '[id*="google_ads"]',
+      '[class*="google-ad"]',
+      'ins.adsbygoogle'
+    ];
+    
+    commonSelectors.forEach(selector => {
+      this.hideElements(selector);
+    });
   }
   
   applyCosmeticFilters(filters, domain) {
@@ -69,13 +125,28 @@ class CosmeticFilter {
     });
   }
   
-  async checkNode(node) {
-    // Check if node matches any blocking rules
-    const domain = window.location.hostname;
-    const response = await chrome.runtime.sendMessage({ action: 'getFilters' });
+  checkNode(node) {
+    // Check if node matches any blocking rules using cached filters
+    if (!this.cachedFilters) return;
     
-    if (response && response.cosmetic) {
-      this.applyCosmeticFilters(response.cosmetic, domain);
+    const domain = window.location.hostname;
+    
+    // Apply global filters
+    if (this.cachedFilters['*']) {
+      this.cachedFilters['*'].forEach(selector => {
+        if (node.matches && node.matches(selector)) {
+          this.hideElements(selector);
+        }
+      });
+    }
+    
+    // Apply domain-specific filters
+    if (this.cachedFilters[domain]) {
+      this.cachedFilters[domain].forEach(selector => {
+        if (node.matches && node.matches(selector)) {
+          this.hideElements(selector);
+        }
+      });
     }
   }
   

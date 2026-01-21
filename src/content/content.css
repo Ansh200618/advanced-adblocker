@@ -7,8 +7,14 @@
 .ad-wrapper,
 .ad-banner,
 .ad-unit,
+.ad-slot,
+.ad-placeholder,
+.adsbygoogle,
 .sponsored-content,
-.sponsored-ad {
+.sponsored-ad,
+.sponsored-post,
+.promo-container,
+.banner-ad {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -22,10 +28,19 @@
 iframe[src*="doubleclick"],
 iframe[src*="googlesyndication"],
 iframe[src*="googleadservices"],
+iframe[src*="/ads/"],
+iframe[id*="google_ads"],
 a[href*="doubleclick.net"],
 a[href*="/ads/"],
+a[href*="advertising"],
 div[id*="google_ads"],
+div[id*="ad-"],
+div[id*="ad_"],
+div[id*="_ad"],
 div[class*="google-ad"],
+div[class*="ad-container"],
+div[class*="ad_container"],
+div[class*="advertisement"],
 ins.adsbygoogle {
   display: none !important;
 }
@@ -34,7 +49,52 @@ ins.adsbygoogle {
 [data-ad-preview="true"],
 [data-ad-comet="true"],
 [data-testid*="ad"],
+[data-testid*="sponsored"],
 [aria-label*="Sponsored"],
-div[data-ad] {
+[aria-label*="Advertisement"],
+div[data-ad],
+div[data-sponsor] {
   display: none !important;
 }
+
+/* Tracking pixels and beacons */
+img[width="1"][height="1"],
+img[src*="pixel"],
+img[src*="tracking"],
+img[src*="beacon"] {
+  display: none !important;
+}
+
+/* Analytics containers */
+#google_analytics,
+#ga-tracker,
+.analytics,
+.tracking-pixel,
+[id*="analytics"],
+[class*="analytics"] {
+  display: none !important;
+}
+
+/* Ad slots by common patterns - more specific to reduce performance impact */
+div[id^="ad-"],
+div[id^="ad_"],
+div[id$="-ad"],
+div[id$="_ad"],
+div[class^="ad-"],
+div[class$="-ad"],
+div[class*="advertisement"],
+div[class*="banner"],
+div[class*="sponsor"],
+a[id^="ad-"],
+a[class^="ad-"],
+iframe[id^="ad-"],
+iframe[class^="ad-"] {
+  display: none !important;
+}
+
+/* Element picker highlighting */
+[data-picker-highlight="true"] {
+  outline: 3px solid red !important;
+  background-color: rgba(255, 0, 0, 0.1) !important;
+}
+
