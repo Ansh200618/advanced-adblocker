@@ -7,7 +7,7 @@
     },
     "condition": {
       "urlFilter": "*://google-analytics.com/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -18,7 +18,7 @@
     },
     "condition": {
       "urlFilter": "*://analytics.google.com/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -29,7 +29,7 @@
     },
     "condition": {
       "urlFilter": "*://facebook.com/tr*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -40,7 +40,7 @@
     },
     "condition": {
       "urlFilter": "*://connect.facebook.net/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -51,7 +51,7 @@
     },
     "condition": {
       "urlFilter": "*/tracking/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -62,7 +62,7 @@
     },
     "condition": {
       "urlFilter": "*/analytics/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -73,7 +73,7 @@
     },
     "condition": {
       "urlFilter": "*://stats.g.doubleclick.net/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -84,7 +84,7 @@
     },
     "condition": {
       "urlFilter": "*://pixel.quantserve.com/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -95,7 +95,7 @@
     },
     "condition": {
       "urlFilter": "*://scorecardresearch.com/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   },
   {
@@ -106,7 +106,7 @@
     },
     "condition": {
       "urlFilter": "*://bat.bing.com/*",
-      "resourceTypes": ["script", "xmlhttprequest", "image", "ping", "beacon"]
+      "resourceTypes": ["script", "xmlhttprequest", "image", "ping"]
     }
   }
 ]
