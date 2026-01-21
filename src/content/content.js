@@ -1,6 +1,36 @@
 // Content Script - Advanced Ad Blocker
 // Handles cosmetic filtering, element hiding, and element picker
 
+// Block tracking scripts early
+(function() {
+  'use strict';
+  
+  // Block common tracking global variables
+  window.ga = undefined;
+  window._gaq = undefined;
+  window.dataLayer = undefined;
+  window.gtag = undefined;
+  window.fbq = undefined;
+  window.Sentry = undefined;
+  window.Rollbar = undefined;
+  window.hj = undefined;
+  window.mixpanel = undefined;
+  window.Bugsnag = undefined;
+  window._paq = undefined;
+  
+  // Override common tracking functions
+  Object.defineProperty(window, 'ga', { value: function() {}, writable: false });
+  Object.defineProperty(window, '_gaq', { value: { push: function() {} }, writable: false });
+  Object.defineProperty(window, 'dataLayer', { value: { push: function() {} }, writable: false });
+  Object.defineProperty(window, 'gtag', { value: function() {}, writable: false });
+  Object.defineProperty(window, 'fbq', { value: function() {}, writable: false });
+  Object.defineProperty(window, 'Sentry', { value: { init: function() {} }, writable: false });
+  Object.defineProperty(window, 'Rollbar', { value: { init: function() {} }, writable: false });
+  Object.defineProperty(window, 'hj', { value: function() {}, writable: false });
+  Object.defineProperty(window, 'mixpanel', { value: { init: function() {}, track: function() {} }, writable: false });
+  Object.defineProperty(window, 'Bugsnag', { value: { start: function() {} }, writable: false });
+})();
+
 class CosmeticFilter {
   constructor() {
     this.pickerActive = false;
@@ -9,6 +39,9 @@ class CosmeticFilter {
   }
   
   async init() {
+    // Apply common cosmetic filters immediately
+    this.applyCommonFilters();
+    
     // Get cosmetic filters for this domain
     const domain = window.location.hostname;
     const response = await chrome.runtime.sendMessage({ action: 'getFilters' });
@@ -22,6 +55,24 @@ class CosmeticFilter {
     
     // Observe DOM changes
     this.observeDOM();
+  }
+  
+  applyCommonFilters() {
+    // Immediately hide common ad selectors
+    const commonSelectors = [
+      '.advertisement',
+      '.ad-container',
+      '.ad-banner',
+      '.ad-unit',
+      '.adsbygoogle',
+      '[id*="google_ads"]',
+      '[class*="google-ad"]',
+      'ins.adsbygoogle'
+    ];
+    
+    commonSelectors.forEach(selector => {
+      this.hideElements(selector);
+    });
   }
   
   applyCosmeticFilters(filters, domain) {
