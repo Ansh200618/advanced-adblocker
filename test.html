@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdBlock Tester - Test Your Ad Blocker Effectiveness</title>
+    <link rel="stylesheet" href="test-style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ AdBlock Tester</h1>
+            <p class="subtitle">Test the effectiveness of your ad blocker</p>
+            <p class="version">Version 3.1.1</p>
+        </header>
+
+        <div class="intro-section">
+            <h2>About This Test</h2>
+            <p>Choosing an ad blocker but don't know where to test it? This site contains various advertising and analytic services you can use to test the effectiveness of your Adblocker. Some examples of Adblockers you can test are:</p>
+            <p><strong>Total Adblock, AdBlock, AdBlock Plus, AdGuard, Ghostery, uBlock Origin, AdBlocker Ultimate</strong> and others.</p>
+            
+            <div class="info-box warning">
+                <p><strong>⚠️ IMPORTANT NOTES:</strong></p>
+                <ul>
+                    <li>Using multiple ad blockers at the same time can negatively affect their work.</li>
+                    <li>Due to caching when refreshing the page, the results of the previous check may still be visible. To avoid this, try refreshing the page with clearing cache (Ctrl+Shift+R or Cmd+Shift+R).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="score-section">
+            <div class="score-display">
+                <div class="score-circle">
+                    <span class="score-number" id="totalScore">0</span>
+                    <span class="score-total">/100</span>
+                </div>
+                <div class="score-details">
+                    <p id="servicesCount">0 services tested</p>
+                    <p id="checksCount">0 checks performed</p>
+                </div>
+            </div>
+            <button class="btn-primary" id="runTestBtn">Run Test</button>
+        </div>
+
+        <!-- Analytics & Tracking Scripts -->
+        <section class="test-section">
+            <div class="section-header">
+                <h2>📊 Analytics & Tracking Scripts</h2>
+                <span class="priority-badge medium">MEDIUM</span>
+            </div>
+            <p class="section-description">This is the most common form of advertising and tracking on the internet. It's very easy for website owners to set up. These services collect data about you in order to find the right advertisement for you.</p>
+            
+            <div class="test-item" data-service="google-analytics">
+                <div class="test-header">
+                    <h3>Google Analytics</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="script-loading">
+                        <span class="test-name">Script loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="block-visibility">
+                        <span class="test-name">Block visibility:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-item" data-service="facebook-pixel">
+                <div class="test-header">
+                    <h3>Facebook Pixel</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="script-loading">
+                        <span class="test-name">Script loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="block-visibility">
+                        <span class="test-name">Block visibility:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-item" data-service="doubleclick">
+                <div class="test-header">
+                    <h3>Google DoubleClick</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="script-loading">
+                        <span class="test-name">Script loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="block-visibility">
+                        <span class="test-name">Block visibility:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Analytics -->
+        <section class="test-section">
+            <div class="section-header">
+                <h2>📈 Web Analytics Services</h2>
+                <span class="priority-badge medium">MEDIUM</span>
+            </div>
+            <p class="section-description">These services monitor your actions on the site and collect information about you. They are only useful to the sites' owners. Unfortunately, blocking them sometimes can completely break the site.</p>
+            
+            <div class="test-item" data-service="google-tag-manager">
+                <div class="test-header">
+                    <h3>Google Tag Manager</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="script-loading">
+                        <span class="test-name">Script loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="script-execution">
+                        <span class="test-name">Script execution:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-item" data-service="hotjar">
+                <div class="test-header">
+                    <h3>Hotjar</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="script-loading">
+                        <span class="test-name">Script loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="script-execution">
+                        <span class="test-name">Script execution:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-item" data-service="mixpanel">
+                <div class="test-header">
+                    <h3>Mixpanel</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="script-loading">
+                        <span class="test-name">Script loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="script-execution">
+                        <span class="test-name">Script execution:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Traditional Advertising -->
+        <section class="test-section">
+            <div class="section-header">
+                <h2>🎯 Traditional Advertising</h2>
+                <span class="priority-badge low">LOW</span>
+            </div>
+            <p class="section-description">This type of advertising is often used on large websites that sell ad space. It is difficult to block because it is difficult to distinguish between an advertising image and a regular image. Often the rules are written for each site separately, so this check is not entirely accurate.</p>
+            
+            <div class="test-item" data-service="banner-ad-1">
+                <div class="test-header">
+                    <h3>Banner Advertisement #1</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="file-loading">
+                        <span class="test-name">File loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="block-visibility">
+                        <span class="test-name">Block visibility:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+                <div class="ad-container" id="banner-ad-1">
+                    <div class="ad-placeholder">Advertisement Space</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-service="banner-ad-2">
+                <div class="test-header">
+                    <h3>Banner Advertisement #2</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="file-loading">
+                        <span class="test-name">File loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="block-visibility">
+                        <span class="test-name">Block visibility:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+                <div class="ad-container" id="banner-ad-2">
+                    <div class="ad-placeholder">Advertisement Space</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Error Tracking -->
+        <section class="test-section">
+            <div class="section-header">
+                <h2>🐛 Error Tracking Services</h2>
+                <span class="priority-badge low">LOW</span>
+            </div>
+            <p class="section-description">Unlike analytics tools, these services are used to track and measure errors on websites. Services monitor almost all user actions so that the error message is as complete as possible. Most often, if you turn these off, nothing will break.</p>
+            
+            <div class="test-item" data-service="sentry">
+                <div class="test-header">
+                    <h3>Sentry</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="script-loading">
+                        <span class="test-name">Script loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="script-execution">
+                        <span class="test-name">Script execution:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-item" data-service="rollbar">
+                <div class="test-header">
+                    <h3>Rollbar</h3>
+                    <span class="status-indicator" data-status="pending">⏳ Pending</span>
+                </div>
+                <div class="test-results">
+                    <div class="test-result" data-test="script-loading">
+                        <span class="test-name">Script loading:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                    <div class="test-result" data-test="script-execution">
+                        <span class="test-name">Script execution:</span>
+                        <span class="test-status">⏳ waiting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="results-summary" id="resultsSummary" style="display:none;">
+            <h2>Test Results Summary</h2>
+            <div class="final-score">
+                <div class="score-large">
+                    <span id="finalScore">0</span>
+                    <span class="score-label">points out of 100</span>
+                </div>
+                <p class="score-breakdown" id="scoreBreakdown"></p>
+            </div>
+            <div class="recommendation">
+                <p><strong>Want a stronger result?</strong> If any checks failed, your blocker is still letting some ads/trackers through.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>AdBlock Tester (version 3.1.1)</p>
+            <p>Website with ads, analytics trackers, metrics, error catchers. Check your blocker: AdBlock, AdBlock Plus, AdGuard, Ghostery, uBlock Origin, AdBlocker Ultimate…</p>
+            <p class="footer-note">Thank you for visiting AdBlock Tester. If you have any feedback or ideas for new features, feel free to reach out.</p>
+        </footer>
+    </div>
+
+    <script src="test-script.js"></script>
+</body>
+</html>
