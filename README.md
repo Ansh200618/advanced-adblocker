@@ -185,6 +185,12 @@ Contributions are welcome! Here's how:
 
 This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
 
+## ❓ FAQ
+
+### Does this project extract images from the web?
+
+No. Advanced Ad Blocker does **not** scrape, download, or extract images from the web. It only blocks requests (including image requests) to known ad and tracker domains using built-in, fully free filter lists (EasyList/EasyPrivacy) via the browser’s Declarative Net Request API. There are no paid services or external APIs involved.
+
 ## 🐛 Bug Reports & Feature Requests
 
 Found a bug or have a feature request?
